@@ -1,0 +1,68 @@
+@charset "utf-8";
+@import './reset', '../partials/media_query.scss', '../partials/mixin',
+  '../partials/theme';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 14px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: initial;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+  font-family: 'NanumSquare', sans-serif;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+input {
+  font-family: 'NanumSquare', sans-serif;
+}
+
+@mixin theme(
+  $theme,
+  $grayscale-1,
+  $grayscale-2,
+  $grayscale-3,
+  $grayscale-4,
+  $grayscale-5,
+  $grayscale-6
+) {
+  [data-theme='#{$theme}'] {
+    background-color: $grayscale-6;
+    color: $grayscale-1;
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
+  $grayscale-5, $grayscale-6 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4,
+    $grayscale-5,
+    $grayscale-6
+  );
+}

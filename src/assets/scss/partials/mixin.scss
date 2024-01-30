@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+@mixin Position(
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin FlexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin Ir() {
+  overflow: hidden;
+  color: transparent;
+  font-size: 1px;
+}
+
+@mixin Ellipsis($multi: null, $line: null) {
+  @if $multi {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $line; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    white-space: normal;
+  } @else {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+}
