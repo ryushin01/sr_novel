@@ -1,0 +1,70 @@
+@charset "utf-8";
+@import '../../assets/scss/partials/mixin.scss',
+  '../../assets/scss/partials/theme.scss';
+
+@mixin theme(
+  $theme,
+  $grayscale-1,
+  $grayscale-2,
+  $grayscale-3,
+  $grayscale-4,
+  $grayscale-5,
+  $grayscale-6
+) {
+  [data-theme='#{$theme}'] {
+    // .btn {
+    //   width: 100%;
+
+    //   &.primary {
+    //     background-color: $primary-color;
+    //   }
+
+    //   &.medium {
+    //     padding: 10px 15px;
+    //   }
+
+    //   &[disabled] {
+    //     opacity: 0.3;
+    //   }
+    // }
+  }
+}
+
+// 테마 적용 후 삭제할 테스트 코드
+.btn {
+  width: 100%;
+
+  &.primary {
+    background-color: $primary-color;
+  }
+
+  &.secondary {
+    background-color: $secondary-color;
+  }
+
+  &.medium {
+    padding: 10px 15px;
+  }
+
+  &.large {
+    padding: 20px 30px;
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
+  $grayscale-5, $grayscale-6 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4,
+    $grayscale-5,
+    $grayscale-6
+  );
+}

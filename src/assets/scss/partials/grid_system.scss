@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/**
+ * grid_system.scss
+ * 이 소스 코드는 반응형 웹 그리드 시스템을 구현한 것입니다. 사용법은 아래와 같으며, 실제 뷰포트에서는 자식 요소들이 Desktop 해상도에서 12분할, Tablet 해상도에서 6분할, Mobile 해상도에서 1분할됩니다.
+ * 
+ * 부모 선택자 {
+ *    @include GridSystem(12, 6, 1);
+ * }
+ */
+
+@mixin GridSystem($desktop: 1, $tablet: 1, $mobile: 1, $default: 1fr) {
+  display: grid;
+  column-gap: 4%;
+  height: 100%;
+
+  // Desktop
+  @media all and (min-width: 1366px) {
+    grid-template-columns: repeat($desktop, $default);
+  }
+
+  // Tablet
+  @media all and (min-width: 768px) and (max-width: 1366px) {
+    grid-template-columns: repeat($tablet, $default);
+  }
+
+  // Mobile
+  @media (min-width: 320px) and (max-width: 768px) {
+    grid-template-columns: repeat($mobile, $default);
+  }
+}
