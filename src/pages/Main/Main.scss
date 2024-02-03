@@ -13,7 +13,7 @@
   $grayscale-5,
   $grayscale-6
 ) {
-  [data-theme='#{$theme}'] {
+  .#{$theme} {
     .container {
       background-color: $grayscale-1;
     }
