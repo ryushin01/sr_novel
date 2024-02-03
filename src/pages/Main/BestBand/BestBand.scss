@@ -1,0 +1,112 @@
+@charset "urf-8";
+@import '../../../assets/scss/partials/mixin.scss';
+@import '../../../assets/scss/partials/theme.scss';
+@import '../../../assets/scss/partials/grid_system.scss';
+@import '../../../assets/scss/partials/media_query.scss';
+
+.bestSellerMainTitle {
+  width: 100%;
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 30px 40px 20px 40px;
+
+  @include Tablet {
+    padding: 30px 20px 20px 20px;
+  }
+
+  @include Mobile {
+    padding: 30px 10px 20px 10px;
+  }
+
+  & > .BestTitle {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('../../../../public/images/right_arrow.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      @include Mobile {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.bestSeller {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 10px;
+
+  & > .mySwiper {
+    @include FlexCenter;
+    width: 100%;
+    height: 100%;
+
+    .swiper-slide {
+      @include FlexCenter;
+    }
+
+    .bestWrap {
+      @include FlexCenter;
+      flex-direction: column;
+      width: 100%;
+      max-width: 160px;
+      height: 100%;
+      gap: 10px;
+
+      & > .bestItemImg {
+        width: 100%;
+        height: 240px;
+        border-radius: 4px;
+        overflow: hidden;
+
+        @include Tablet {
+          height: 180px;
+        }
+
+        @include Mobile {
+          height: 120px;
+        }
+
+        & > a {
+          display: flex;
+          width: 100%;
+          height: 100%;
+
+          & > img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      & > .bestItemTitle {
+        width: 100%;
+        height: auto;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 5%;
+
+        & > a {
+          width: 100%;
+          height: 100%;
+        }
+
+        @include Ellipsis(true, 1);
+      }
+    }
+  }
+}
