@@ -6,7 +6,6 @@ import axios from 'axios';
 const BASE_URL =
   'https://cors-anywhere.herokuapp.com/https://www.aladdin.co.kr';
 // const BASE_URL = '/sr_novel/data/';
-// const BASE_URL = '/api';
 
 export const API = {
   DATA: `${BASE_URL}/data`,
