@@ -11,4 +11,14 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1600,
   },
+  resolve: {
+    alias: [
+      { find: '@', replacement: '/src' },
+      { find: '@modules', replacement: '/src/modules' },
+      { find: '@components', replacement: '/src/components' },
+      { find: '@pages', replacement: '/src/pages' },
+      { find: '@images', replacement: '/src/assets/images' },
+      { find: '@scss', replacement: '/src/assets/scss' },
+    ],
+  },
 });

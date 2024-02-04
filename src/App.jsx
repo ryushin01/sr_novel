@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Router from './Router';
-import ThemeSwitch from './components/ThemeSwitch/ThemeSwitch';
-import './assets/scss/base/common.scss';
+import ThemeSwitch from '@components/ThemeSwitch/ThemeSwitch';
+import '@scss/base/common.scss';
 
 const App = () => {
   const [isThemeChange, setIsThemeChange] = useState(true);
