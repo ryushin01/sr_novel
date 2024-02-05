@@ -17,8 +17,9 @@ export default defineConfig({
       { find: '@modules', replacement: '/src/modules' },
       { find: '@components', replacement: '/src/components' },
       { find: '@pages', replacement: '/src/pages' },
-      { find: '@images', replacement: '/src/assets/images' },
+      { find: '@data', replacement: '/src/assets/data' },
       { find: '@scss', replacement: '/src/assets/scss' },
+      { find: '@images', replacement: '/public/images' },
     ],
   },
 });
