@@ -1,0 +1,34 @@
+@import '@scss/partials/mixin.scss';
+@import '@scss/partials/theme.scss';
+
+.select-container {
+  display: flex;
+
+  & > .select-box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid $grayscale-3;
+    font-size: 1rem;
+    padding: 5px 30px 5px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: url('@images/select_down_arrow.png');
+    background-repeat: no-repeat;
+    background-size: 8px;
+    background-position: 90% 50%;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:focus {
+      outline-color: $primary-color;
+      background-image: url('@images/select_up_arrow.png');
+    }
+  }
+}
