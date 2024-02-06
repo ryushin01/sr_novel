@@ -1,0 +1,37 @@
+@import '@scss/partials/mixin.scss';
+@import '@scss/partials/theme.scss';
+@import '@scss/partials/grid_system.scss';
+@import '@scss/partials/media_query.scss';
+@import '@scss/partials/Typography.scss';
+
+.main-title {
+  @include Typography(xl, 700);
+  display: flex;
+  width: 100%;
+  padding: 30px 20px 10px 20px;
+
+  @include Tablet {
+    padding: 30px 20px 20px 20px;
+  }
+
+  @include Mobile {
+    padding: 30px 10px 20px 10px;
+  }
+
+  & > a {
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      right: -30px;
+      transform: translateY(-50%);
+      background-image: url('@images/right_arrow.png');
+      background-size: 20px;
+      background-repeat: no-repeat;
+    }
+  }
+}
