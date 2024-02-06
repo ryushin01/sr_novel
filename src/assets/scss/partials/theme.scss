@@ -1,21 +1,19 @@
 @charset "utf-8";
 
 // 테마 컬러
-$primary-color: #6a89cc;
-$secondary-color: #1e3799;
+$primary-color: #ffb6b9;
+$secondary-color: #fbc687;
 $error-color: #bb2649;
 
 // 회색조 색상 모음(테마 스위치 적용)
-$grayscale-1: #222;
-$grayscale-2: #999;
-$grayscale-3: #ccc;
-$grayscale-4: #e0e0e0;
-$grayscale-5: #fafafa;
-$grayscale-6: #fff;
+$grayscale-1: #111;
+$grayscale-2: #777;
+$grayscale-3: #c8c8c8;
+$grayscale-4: #f5f5f5;
 
 $pallette: (
-  (light, #222, #999, #ccc, #e0e0e0, #fafafa, #fff),
-  (dark, #fff, #fafafa, #e0e0e0, #ccc, #999, #222)
+  (light, #111, #777, #c8c8c8, #f5f5f5),
+  (dark, #f5f5f5, #c8c8c8, #777, #111)
 );
 
 @mixin ThemeTransition {
