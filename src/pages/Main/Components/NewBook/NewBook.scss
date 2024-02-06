@@ -3,16 +3,9 @@
 @import '@scss/partials/theme.scss';
 @import '@scss/partials/grid_system.scss';
 @import '@scss/partials/media_query.scss';
+@import '@scss/partials/Typography.scss';
 
-@mixin theme(
-  $theme,
-  $grayscale-1,
-  $grayscale-2,
-  $grayscale-3,
-  $grayscale-4,
-  $grayscale-5,
-  $grayscale-6
-) {
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   .#{$theme} {
     .new-container {
       width: 100%;
@@ -20,10 +13,9 @@
       max-height: 400px;
 
       & > .new-main-title {
-        width: 100%;
+        @include Typography(xl, 700);
         display: inline-block;
-        font-size: 1.3rem;
-        font-weight: bold;
+        width: 100%;
         padding: 30px 20px 10px 20px;
 
         @include Tablet {
@@ -35,10 +27,9 @@
         }
 
         & > .new-sub-title {
-          position: relative;
-          color: $grayscale-1;
           display: flex;
           justify-content: space-between;
+          color: $grayscale-1;
 
           svg {
             width: 20px;
@@ -49,10 +40,10 @@
       }
 
       .new-swiper-wrap {
-        width: 100%;
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        width: 100%;
         padding: 0 10px;
 
         & > .main-swiper {
@@ -62,7 +53,6 @@
 
           .swiper-slide {
             @include FlexCenter;
-            background-color: #fff;
             border-radius: 8px;
           }
 
@@ -76,19 +66,18 @@
             padding: 10px 0;
 
             & > .new-item-img {
+              @include FlexCenter;
               width: 100%;
               border-radius: 4px;
+              background-color: #fff;
               overflow: hidden;
               aspect-ratio: 2/3;
+              box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
 
               & > a {
                 display: flex;
-                width: 100%;
-                height: 100%;
-                background-color: #fff;
 
                 & > img {
-                  width: 100%;
                   height: 100%;
                   object-fit: contain;
                 }
@@ -96,24 +85,19 @@
             }
 
             & > .new-item-title {
+              @include Ellipsis(true, 1);
               width: 100%;
               height: auto;
-              font-size: 1.1rem;
-              font-weight: bold;
               padding-top: 5%;
-              display: flex;
-              flex-direction: column;
 
               & > a {
-                width: 100%;
-                height: 100%;
+                @include Typography(xs, 700);
+                color: $grayscale-1;
               }
-
-              @include Ellipsis(true, 1);
             }
 
             & > span {
-              font-size: 1rem;
+              @include Typography(2xs, 400);
               color: $grayscale-2;
               padding-top: 2%;
             }
@@ -125,8 +109,8 @@
 }
 
 // @each를 이용하여 테마를 적용하는데, in을 이용하여 $pallette를 순회하면서 각각의 테마를 적용시킵니다.
-@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
-  $grayscale-5, $grayscale-6 in $pallette
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
 {
   // @mixin을 이용하여 생성한 테마를 @include를 이용하여 적용시킵니다.
   @include theme(
@@ -134,8 +118,6 @@
     $grayscale-1,
     $grayscale-2,
     $grayscale-3,
-    $grayscale-4,
-    $grayscale-5,
-    $grayscale-6
+    $grayscale-4
   );
 }
