@@ -2,6 +2,30 @@
 @import './reset', '../partials/media_query.scss', '../partials/mixin',
   '../partials/theme';
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+// @font-face {
+//   font-family: 'seolleimcool-SemiBold';
+//   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2')
+//     format('woff2');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'Dovemayo_gothic';
+//   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2')
+//     format('woff2');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +34,9 @@
 
 html,
 body {
-  font-family: 'NanumSquare', sans-serif;
+  font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
   font-size: 14px;
+  line-height: 18px;
 }
 
 li {
@@ -38,31 +63,21 @@ input {
   font-family: 'NanumSquare', sans-serif;
 }
 
-@mixin theme(
-  $theme,
-  $grayscale-1,
-  $grayscale-2,
-  $grayscale-3,
-  $grayscale-4,
-  $grayscale-5,
-  $grayscale-6
-) {
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   [data-theme='#{$theme}'] {
-    background-color: $grayscale-6;
+    background-color: $grayscale-4;
     color: $grayscale-1;
   }
 }
 
-@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
-  $grayscale-5, $grayscale-6 in $pallette
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
 {
   @include theme(
     $theme,
     $grayscale-1,
     $grayscale-2,
     $grayscale-3,
-    $grayscale-4,
-    $grayscale-5,
-    $grayscale-6
+    $grayscale-4
   );
 }
