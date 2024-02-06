@@ -10,7 +10,7 @@
       width: 100%;
       height: 100vh;
       margin-bottom: 150px;
-      background-color: $grayscale-6;
+      background-color: $grayscale-4;
 
       & .main-body-wrap {
         width: 100%;
@@ -18,7 +18,7 @@
         display: flex;
         flex-direction: column;
 
-        & > .contentWrap {
+        & > .content-wrap {
           width: 100%;
           height: 100%;
           max-width: 1200px;
@@ -41,49 +41,4 @@
     $grayscale-3,
     $grayscale-4
   );
-}
-
-.container {
-  width: 100%;
-  height: 100vh;
-  margin-bottom: 150px;
-
-  & .mainContainer {
-    width: 100%;
-    height: calc(100vh - 100px);
-    display: flex;
-    flex-direction: column;
-
-    & > .swiperWrap > .mySwiper {
-      width: 100%;
-      height: 400px;
-
-      .swiper-pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .swiper-pagination-bullet {
-          border: 6px solid $grayscale-4;
-          margin-right: 15px;
-        }
-
-        .swiper-pagination-bullet-active {
-          width: 10px;
-          height: 10px;
-        }
-      }
-
-      img {
-        height: 100%;
-      }
-    }
-
-    & > .contentWrap {
-      width: 100%;
-      height: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-  }
 }
