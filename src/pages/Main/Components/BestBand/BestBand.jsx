@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Loading from '../../Loading/Loading';
+import { ReactComponent as Arrow } from '@svg/right_arrow.svg';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -9,16 +9,16 @@ import 'swiper/scss/navigation';
 
 import './BestBand.scss';
 
-const BestBand = ({ booksData, loading }) => {
+const BestBand = ({ booksData }) => {
   return (
-    <>
-      {loading && <Loading />}
-      <div className="bestSellerMainTitle">
-        <Link className="BestTitle" to="/bestseller">
+    <section className="best-seller-container">
+      <div className="best-seller-main-title">
+        <Link className="Best-title" to="/bestseller">
           <h2>TOP 10 베스트셀러 모음집!</h2>
+          <Arrow />
         </Link>
       </div>
-      <section className="bestSeller">
+      <div className="best-seller-wrap">
         {/* 스와이퍼 형식으로 변경 해보자 */}
         <Swiper
           slidesPerView="5" // 한 화면에 보여줄 슬라이드 개수
@@ -39,30 +39,33 @@ const BestBand = ({ booksData, loading }) => {
             },
           }}
           modules={[Navigation]}
-          className="mySwiper"
+          className="main-swiper"
         >
           {booksData &&
-            booksData?.map(data => {
+            booksData?.map(({ itemId, isbn13, title, link, author, cover }) => {
+              const authorSplit = author.split('(지은이)');
+
               return (
-                <SwiperSlide key={data.itemId}>
-                  <div className="bestWrap">
-                    <div className="bestItemImg">
-                      <Link to={`/detail:${data.isbn13}`}>
-                        <img src={data.cover} alt={data.title} />
+                <SwiperSlide key={itemId}>
+                  <div className="best-swiper-wrap">
+                    <div className="best-item-img">
+                      <Link to={`/detail:${isbn13}`}>
+                        <img src={cover} alt={title} />
                       </Link>
                     </div>
-                    <div className="bestItemTitle">
-                      <Link to={data.link}>
-                        <h3>{data.title}</h3>
+                    <div className="best-item-title">
+                      <Link to={link}>
+                        <h3>{title}</h3>
                       </Link>
                     </div>
+                    <span>{authorSplit}</span>
                   </div>
                 </SwiperSlide>
               );
             })}
         </Swiper>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

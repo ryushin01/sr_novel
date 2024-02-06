@@ -1,0 +1,141 @@
+@charset "urf-8";
+@import '@scss/partials/mixin.scss';
+@import '@scss/partials/theme.scss';
+@import '@scss/partials/grid_system.scss';
+@import '@scss/partials/media_query.scss';
+
+@mixin theme(
+  $theme,
+  $grayscale-1,
+  $grayscale-2,
+  $grayscale-3,
+  $grayscale-4,
+  $grayscale-5,
+  $grayscale-6
+) {
+  .#{$theme} {
+    .new-container {
+      width: 100%;
+      height: 100%;
+      max-height: 400px;
+
+      & > .new-main-title {
+        width: 100%;
+        display: inline-block;
+        font-size: 1.3rem;
+        font-weight: bold;
+        padding: 30px 20px 10px 20px;
+
+        @include Tablet {
+          padding: 30px 20px 20px 20px;
+        }
+
+        @include Mobile {
+          padding: 30px 10px 20px 10px;
+        }
+
+        & > .new-sub-title {
+          position: relative;
+          color: $grayscale-1;
+          display: flex;
+          justify-content: space-between;
+
+          svg {
+            width: 20px;
+            height: 20px;
+            fill: $grayscale-1;
+          }
+        }
+      }
+
+      .new-swiper-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 10px;
+
+        & > .main-swiper {
+          @include FlexCenter;
+          width: 100%;
+          height: 100%;
+
+          .swiper-slide {
+            @include FlexCenter;
+            background-color: #fff;
+            border-radius: 8px;
+          }
+
+          .new-swiper-wrap {
+            @include FlexCenter;
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+            max-width: 160px;
+            height: 100%;
+            padding: 10px 0;
+
+            & > .new-item-img {
+              width: 100%;
+              border-radius: 4px;
+              overflow: hidden;
+              aspect-ratio: 2/3;
+
+              & > a {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+
+                & > img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                }
+              }
+            }
+
+            & > .new-item-title {
+              width: 100%;
+              height: auto;
+              font-size: 1.1rem;
+              font-weight: bold;
+              padding-top: 5%;
+              display: flex;
+              flex-direction: column;
+
+              & > a {
+                width: 100%;
+                height: 100%;
+              }
+
+              @include Ellipsis(true, 1);
+            }
+
+            & > span {
+              font-size: 1rem;
+              color: $grayscale-2;
+              padding-top: 2%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// @each를 이용하여 테마를 적용하는데, in을 이용하여 $pallette를 순회하면서 각각의 테마를 적용시킵니다.
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
+  $grayscale-5, $grayscale-6 in $pallette
+{
+  // @mixin을 이용하여 생성한 테마를 @include를 이용하여 적용시킵니다.
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4,
+    $grayscale-5,
+    $grayscale-6
+  );
+}

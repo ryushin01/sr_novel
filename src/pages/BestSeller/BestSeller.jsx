@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { customAxios } from '../../config';
 import { Link } from 'react-router-dom';
+import { BEST_SELLER_DATA } from '@data/ConstantData';
+import SelectBox from '../../components/SelectBox/SelectBox';
 import './BestSeller.scss';
 
 const BestSeller = () => {
   const [bestSellerData, setBestSellerData] = useState([]);
+  const [selectValue, setSelectValue] = useState('최신순');
 
   const API_KEY = import.meta.env.VITE_ALADDIN_API_KEY;
   const API_URL = `ttb/api/ItemList.aspx?ttbkey=${API_KEY}&QueryType=Bestseller&MaxResults=20&start=1&SearchTarget=Book&output=js&Cover=Big&CategoryId=51122&Version=20131101`;
@@ -21,12 +24,17 @@ const BestSeller = () => {
       console.error(error);
     }
   };
+
+  const handleSelectChange = e => {
+    setSelectValue(e.target.value);
+  };
+
   return (
     <main className="bestSellerContainer">
       <section className="bestSellerItemList">
         <div className="bestSellerTitleWrap">
           <h2>베스트셀러</h2>
-          <span>필터</span>
+          <SelectBox onChange={handleSelectChange} data={BEST_SELLER_DATA} />
         </div>
         <div className="bestSellerItem">
           {bestSellerData &&
