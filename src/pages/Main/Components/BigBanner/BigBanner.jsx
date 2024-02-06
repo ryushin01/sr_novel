@@ -21,7 +21,7 @@ const BigBanner = () => {
         }}
         autoplay={{
           // 자동 슬라이드 설정
-          delay: 100000, // 슬라이드 시간 간격
+          delay: 4000, // 슬라이드 시간 간격
           disableOnInteraction: false, // 슬라이드 이동 후 자동 슬라이드 정지 여부
           pauseOnMouseEnter: true, // 마우스 호버 시 자동 슬라이드 정지 여부
         }}

@@ -51,7 +51,7 @@ const Main = () => {
       <main className="main-container">
         <section className="main-body-wrap">
           <BigBanner />
-          <div className="contentWrap">
+          <div className="content-wrap">
             <NewBook newBooksData={newBooksData} />
             <BestBand booksData={bsBooksData} />
             <NewSpecial specialBooksData={specialBooksData} />
