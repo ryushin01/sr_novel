@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as Arrow } from '@svg/right_arrow.svg';
+import MainTitle from '../../../../components/MainTitle/MainTitle';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -12,12 +12,7 @@ import './BestBand.scss';
 const BestBand = ({ booksData }) => {
   return (
     <section className="best-seller-container">
-      <div className="best-seller-main-title">
-        <Link className="Best-title" to="/bestseller">
-          <h2>TOP 10 베스트셀러 모음집!</h2>
-          <Arrow />
-        </Link>
-      </div>
+      <MainTitle link="/bestseller" title="[BEST] 베스트셀러 리스트" />
       <div className="best-seller-wrap">
         {/* 스와이퍼 형식으로 변경 해보자 */}
         <Swiper
