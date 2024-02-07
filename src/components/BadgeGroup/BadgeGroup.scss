@@ -1,0 +1,7 @@
+@charset "utf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/theme.scss';
+
+.badge-group {
+  display: flex;
+  gap: 4px;
+}
