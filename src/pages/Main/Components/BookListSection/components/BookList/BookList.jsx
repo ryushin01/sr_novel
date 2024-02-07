@@ -1,4 +1,4 @@
-import BookListItems from '../../../BookListItems/BookListItems';
+import BookListContents from '../../../BookListItems/BookListContents';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -34,12 +34,17 @@ const BookList = ({ bookData, direction }) => {
           }}
           modules={[Navigation]}
           className="book-list-swiper"
+          wrapperTag="ul"
         >
           {bookData &&
             bookData?.map(data => {
               return (
-                <SwiperSlide key={data.itemId}>
-                  <BookListItems bookData={data} direction={direction} />
+                <SwiperSlide
+                  key={data.itemId}
+                  tag="li"
+                  className="book-list-swiper-items"
+                >
+                  <BookListContents bookData={data} direction={direction} />
                 </SwiperSlide>
               );
             })}
@@ -49,7 +54,11 @@ const BookList = ({ bookData, direction }) => {
   ) : (
     <ul className="book-list">
       {bookData.map(data => {
-        return <BookListItems key={data.itemId} bookData={data} />;
+        return (
+          <li key={data.itemId} className="book-list-items">
+            <BookListContents bookData={data} />
+          </li>
+        );
       })}
     </ul>
   );
