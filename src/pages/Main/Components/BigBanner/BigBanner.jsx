@@ -8,7 +8,7 @@ import './BigBanner.scss';
 
 const BigBanner = () => {
   return (
-    <div className="swiperWrap">
+    <section className="swiper-wrap">
       <Swiper
         loop={true} // 무한 반복 여부
         centeredSlides={true} // 슬라이드 중앙 정렬
@@ -26,7 +26,7 @@ const BigBanner = () => {
           pauseOnMouseEnter: true, // 마우스 호버 시 자동 슬라이드 정지 여부
         }}
         modules={[Autoplay, Pagination]}
-        className="mySwiper"
+        className="big-swiper"
       >
         <SwiperSlide>
           <img src="https://picsum.photos/id/131/1024/1280" />
@@ -44,7 +44,7 @@ const BigBanner = () => {
           <img src="https://picsum.photos/id/131/1024/1280" />
         </SwiperSlide>
       </Swiper>
-    </div>
+    </section>
   );
 };
 
