@@ -8,16 +8,12 @@ import 'swiper/scss';
 import 'swiper/css/navigation';
 
 import './NewSpecial.scss';
+import MainTitle from '../MainTitle/MainTitle';
 
 const NewSpecial = ({ specialBooksData }) => {
   return (
     <section className="new-special-container">
-      <div className="new-special-main-title">
-        <Link className="new-special-sub-title" to="/bestseller">
-          <h2>주목할만한 신간 리스트</h2>
-          <Arrow />
-        </Link>
-      </div>
+      <MainTitle link="#" title="[NEW] 신간 특선" />
       <div className="new-special-swiper-wrap">
         <Swiper
           slidesPerView="3"
