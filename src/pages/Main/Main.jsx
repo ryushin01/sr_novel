@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 import { customAxios } from '../../config';
 import { API_URL } from '@data/ApiUrl';
 
-import BestBand from './Components/BestBand/BestBand';
 import BigBanner from './Components/BigBanner/BigBanner';
-import NewBook from './Components/NewBook/NewBook';
 import Loading from '@pages/Loading/Loading';
+import BookListWrapper from './Components/BookListWrapper/BookListWrapper';
+import BookListWrapperGroup from './Components/BookListWrapperGroup/BookListWrapperGroup';
 
 import './Main.scss';
-import NewSpecial from './Components/NewSpecial/NewSpecial';
 
 const Main = () => {
   const [bsBooksData, setBsBooksData] = useState([]);
@@ -52,100 +50,36 @@ const Main = () => {
     }
   };
 
-  console.log(blogBooksData);
-
   return (
     <>
       {loading && <Loading />}
       <main className="main-container">
-        <section className="main-body-wrap">
+        <div className="main-body-wrap">
           <BigBanner />
-          <div className="book-list-wrap">
-            <div className="new-special-list">
-              <div className="new-special-main-title">
-                <Link to="#">
-                  <h2>[NEW] 주목할만한 신간 리스트</h2>
-                </Link>
-              </div>
-              <ul>
-                {specialBooksData.map(
-                  ({ author, itemId, cover, title, pubDate }) => {
-                    const authorSplit = author.split('(지은이)');
-                    return (
-                      <li key={itemId}>
-                        <div className="new-special-img">
-                          <img src={cover} alt={title} />
-                        </div>
-                        <div className="new-special-title">
-                          <h3>{title}</h3>
-                          <h4>{authorSplit}</h4>
-                          <span>출판일 : {pubDate}</span>
-                        </div>
-                      </li>
-                    );
-                  },
-                )}
-              </ul>
-            </div>
-            <div className="new-special-list">
-              <div className="new-special-main-title">
-                <Link to="#">
-                  <h2>[NEW] 주목할만한 신간 리스트</h2>
-                </Link>
-              </div>
-              <ul>
-                {editorBooksData.map(
-                  ({ author, itemId, cover, title, pubDate }) => {
-                    const authorSplit = author.split('(지은이)');
-                    return (
-                      <li key={itemId}>
-                        <div className="new-special-img">
-                          <img src={cover} alt={title} />
-                        </div>
-                        <div className="new-special-title">
-                          <h3>{title}</h3>
-                          <h4>{authorSplit}</h4>
-                          <span>출판일 : {pubDate}</span>
-                        </div>
-                      </li>
-                    );
-                  },
-                )}
-              </ul>
-            </div>
-            <div className="new-special-list">
-              <div className="new-special-main-title">
-                <Link to="#">
-                  <h2>[NEW] 주목할만한 신간 리스트</h2>
-                </Link>
-              </div>
-              <ul>
-                {blogBooksData.map(
-                  ({ author, itemId, cover, title, pubDate }) => {
-                    const authorSplit = author.split('(지은이)');
-                    return (
-                      <li key={itemId}>
-                        <div className="new-special-img">
-                          <img src={cover} alt={title} />
-                        </div>
-                        <div className="new-special-title">
-                          <h3>{title}</h3>
-                          <h4>{authorSplit}</h4>
-                          <span>출판일 : {pubDate}</span>
-                        </div>
-                      </li>
-                    );
-                  },
-                )}
-              </ul>
-            </div>
-          </div>
-          <div className="content-wrap">
-            <NewBook newBooksData={newBooksData} />
-            <BestBand booksData={bsBooksData} />
-            <NewSpecial specialBooksData={specialBooksData} />
-          </div>
-        </section>
+          <BookListWrapperGroup
+            specialBooksData={specialBooksData}
+            editorBooksData={editorBooksData}
+            blogBooksData={blogBooksData}
+          />
+          <BookListWrapper
+            link="#"
+            title="[NEW] 이번에 나온 따끈따끈한 신작"
+            bookData={newBooksData}
+            direction={true}
+          />
+          <BookListWrapper
+            link="#"
+            title="[BEST] 베스트셀러 리스트"
+            bookData={bsBooksData}
+            direction={true}
+          />
+          <BookListWrapper
+            link="#"
+            title="[NEW] 주목! 할만한 신간 리스트"
+            bookData={specialBooksData}
+            direction={true}
+          />
+        </div>
       </main>
     </>
   );
