@@ -5,5 +5,5 @@ export const API_URL = {
   NEW_BOOK: `ttb/api/ItemList.aspx?ttbkey=${API_KEY}&QueryType=itemNewAll&MaxResults=10&start=1&SearchTarget=Book&output=js&Cover=Big&CategoryId=51122&OptResult=ebookList,usedList,fileFormatList&Version=20131101`,
   SPECIAL: `ttb/api/ItemList.aspx?ttbkey=${API_KEY}&QueryType=ItemNewSpecial&MaxResults=5&start=1&SearchTarget=Book&output=js&Cover=MidBig&CategoryId=51122&OptResult=ebookList,usedList,fileFormatList&Version=20131101`,
   EDITOR: `ttb/api/ItemList.aspx?ttbkey=${API_KEY}&QueryType=ItemEditorChoice&MaxResults=5&start=1&SearchTarget=Book&output=js&Cover=MidBig&CategoryId=51122&OptResult=ebookList,usedList,fileFormatList&Version=20131101`,
-  BLOG: `ttb/api/ItemList.aspx?ttbkey=${API_KEY}&QueryType=BlogBest&MaxResults=5&start=1&SearchTarget=Book&output=js&Cover=MidBig&CategoryId=51122&OptResult=ebookList,usedList,fileFormatList&Version=20131101`,
+  BLOG: `ttb/api/ItemList.aspx?ttbkey=${API_KEY}&QueryType=BlogBest&MaxResults=5&start=1&SearchTarget=Book&output=js&Cover=MidBig&OptResult=ebookList,usedList,fileFormatList&Version=20131101`,
 };
