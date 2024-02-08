@@ -10,7 +10,7 @@ import 'swiper/scss/navigation';
  * @property {array} bookData - 화면에 표시할 책 데이터에 대한 배열을 입력합니다.
  * @property {string} direction - List의 방향을 입력합니다. (가로: true, 세로: false) 디폴트 값은 false 입니다.
  */
-const BookList = ({ bookData, direction }) => {
+const BookList = ({ bookData, direction, rank }) => {
   return direction ? (
     <>
       <div className="book-list-swiper-wrap">
@@ -56,7 +56,7 @@ const BookList = ({ bookData, direction }) => {
       {bookData.map(data => {
         return (
           <li key={data.itemId} className="book-list-items">
-            <BookListContents bookData={data} />
+            <BookListContents bookData={data} rank={rank} />
           </li>
         );
       })}

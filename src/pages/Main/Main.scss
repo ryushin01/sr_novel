@@ -13,6 +13,30 @@
         flex-direction: column;
         width: 100%;
 
+        & > .main-banner-1 {
+          width: 100%;
+          max-width: 1200px;
+          height: 150px;
+          margin: 0 auto;
+          padding: 0 10px;
+          border-radius: 10px;
+          background-image: url('@images/main_banner.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        & > .main-banner-2 {
+          width: 100%;
+          max-width: 1200px;
+          height: 150px;
+          margin: 0 auto;
+          padding: 0 10px;
+          border-radius: 10px;
+          background-image: url('@images/main_banner_2.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
         // 세로방향 스타일
         & > .book-list-container {
           @include GridSystem(3, 3, 1);
@@ -74,7 +98,7 @@
                     }
 
                     & > span {
-                      @include Typography(3xs, 400);
+                      @include Typography(2xs, 400);
                       color: $grayscale-2;
                     }
                   }
