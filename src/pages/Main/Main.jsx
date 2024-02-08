@@ -17,8 +17,8 @@ const Main = () => {
   const [specialBooksData, setSpecialBooksData] = useState([]);
   const [editorBooksData, setEditorBooksData] = useState([]);
   const [blogBooksData, setBlogBooksData] = useState([]);
+  const [rankBooksData, setRankBooksData] = useState([]);
   const [loading, setLoading] = useState(true);
-  // VITE에서 환경변수를 사용하기 위해서는 import.meta.env를 사용해야 한다.
 
   const API_ENDPOINTS = [
     API_URL.BEST_SELLER,
@@ -26,6 +26,7 @@ const Main = () => {
     API_URL.SPECIAL,
     API_URL.EDITOR,
     API_URL.BLOG,
+    API_URL.RANK,
   ];
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const Main = () => {
       setSpecialBooksData(response[2]?.data?.item);
       setEditorBooksData(response[3]?.data?.item);
       setBlogBooksData(response[4]?.data?.item);
+      setRankBooksData(response[5]?.data?.item);
 
       setLoading(false);
     } catch (error) {
@@ -60,24 +62,33 @@ const Main = () => {
             specialBooksData={specialBooksData}
             editorBooksData={editorBooksData}
             blogBooksData={blogBooksData}
+            rank={false}
           />
+          <div className="main-banner-1" />
           <BookListWrapper
             link="#"
             title="[NEW] 이번에 나온 따끈따끈한 신작"
             bookData={newBooksData}
             direction={true}
           />
+          <div className="main-banner-2" />
           <BookListWrapper
             link="#"
             title="[BEST] 베스트셀러 리스트"
             bookData={bsBooksData}
             direction={true}
           />
+          <div className="main-banner-1" />
           <BookListWrapper
             link="#"
             title="[NEW] 주목! 할만한 신간 리스트"
             bookData={specialBooksData}
             direction={true}
+          />
+          <div className="main-banner-2" />
+          <BookListWrapperGroup
+            rankBooksData={rankBooksData && rankBooksData}
+            rank={true}
           />
         </div>
       </main>
