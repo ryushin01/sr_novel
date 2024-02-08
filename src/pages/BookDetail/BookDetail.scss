@@ -1,0 +1,16 @@
+@import '@scss/partials/grid_system.scss';
+@import '@scss/partials/media_query.scss';
+@import '@scss/partials/typography.scss';
+@import '@scss/partials/mixin.scss';
+@import '@scss/partials/theme.scss';
+
+.book-detail-container {
+  width: 100%;
+
+  & > .book-detail-info-wrap {
+    @include FlexCenter;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+  }
+}
