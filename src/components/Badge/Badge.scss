@@ -1,0 +1,26 @@
+@charset "utf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/theme.scss';
+
+.badge {
+  display: inline-block;
+  padding: 0 6px;
+  border: 1px transparent solid;
+  border-radius: 8px;
+  font-size: 10px;
+  line-height: 16px;
+
+  &.new {
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+
+  &.hot {
+    border-color: $secondary-color;
+    color: $secondary-color;
+  }
+
+  &.end {
+    border-color: $grayscale-3;
+    color: $grayscale-3;
+  }
+}
