@@ -2,7 +2,11 @@
 
 // 미지정 시 font-size: 14px; line-height: 18px;이 초기값으로 들어갑니다.
 @mixin Typography($size: null, $weight: 400) {
-  @if $size == 3xl {
+  @if ($size == 4xl) {
+    font-size: 26px;
+    line-height: 1;
+    font-weight: $weight;
+  } @else if $size == 3xl {
     font-size: 24px;
     line-height: 32px;
     font-weight: $weight;
