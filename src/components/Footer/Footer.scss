@@ -23,10 +23,6 @@
           @include Position(absolute, $top: 27px, $left: 10px);
           @include Typography(4xl, 700);
           color: $primary-color;
-
-          // 삭제 후 커밋
-          font-size: 26px;
-          line-height: 1;
         }
 
         ul {
