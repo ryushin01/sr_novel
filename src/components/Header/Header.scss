@@ -1,111 +1,72 @@
 @charset "urf-8";
-@import '../../assets/scss/partials/mixin.scss',
-  '../../assets/scss/partials/theme.scss';
-@import '../../assets/scss/partials/grid_system.scss',
-  '../../assets/scss/partials/media_query.scss';
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/theme.scss', '@scss/partials/typography.scss';
 
-.header {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  padding: 0 10px;
-  max-width: 1200px;
-  margin: 0 auto;
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      background-color: $grayscale-4;
+      color: $grayscale-1;
 
-  & > .leftWrap {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
+      .inner-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 23px 10px;
 
-    @include Mobile {
-      width: 40%;
+        h1 {
+          a {
+            @include Typography(4xl, 700);
+            color: $primary-color;
+          }
+        }
+
+        .link-search {
+          @include Ir();
+          width: 32px;
+          height: 32px;
+          background-image: url(@svg/header/icon_search_#{$theme}.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 30px;
+        }
+      }
     }
 
-    & ul {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+    @include Mobile {
+      .header {
+        .inner-wrap {
+          padding: 9px 20px;
 
-      & li {
-        cursor: pointer;
-        padding-left: 5%;
-        font-weight: bold;
-
-        &:first-child {
-          padding: 0;
-        }
-
-        & > h1 {
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-          font-size: 2.5rem;
-
-          @include Mobile {
-            font-size: 1.4rem;
+          h1 {
+            a {
+              @include Typography(lg);
+            }
           }
 
-          @include Tablet {
-            font-size: 2rem;
-          }
-        }
-
-        & > a {
-          font-size: 1.4rem;
-          text-align: center;
-
-          @include Mobile {
-            font-size: 0;
-          }
-
-          @include Tablet {
-            font-size: 1.1rem;
+          .link-search {
+            background-size: 24px;
           }
         }
       }
     }
   }
+}
 
-  & .rightWrap {
-    width: 40%;
-    height: 100%;
-    display: flex;
-
-    @include Mobile {
-      width: 60%;
-    }
-
-    & ul {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-
-      & > li {
-        font-weight: bold;
-        text-align: center;
-        padding-right: 5%;
-        cursor: pointer;
-
-        &:last-child {
-          padding: 0;
-        }
-
-        & > a {
-          font-size: 1.4rem;
-          text-align: center;
-
-          @include Mobile {
-            font-size: 0.9rem;
-          }
-
-          @include Tablet {
-            font-size: 1.3rem;
-          }
-        }
-      }
-    }
-  }
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
 }
