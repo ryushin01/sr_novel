@@ -4,6 +4,7 @@ import Login from './pages/Login/Login';
 import Header from './components/Header/Header';
 import BestSeller from './pages/BestSeller/BestSeller';
 import BookDetail from './pages/BookDetail/BookDetail';
+import Footer from './components/Footer/Footer';
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/bestseller" element={<BestSeller />} />
         <Route path="/detail/:id" element={<BookDetail />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

@@ -35,6 +35,10 @@
     line-height: 23px;
     font-weight: $weight;
   } @else if $size == 3xs {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: $weight;
+  } @else if $size == 4xs {
     font-size: 10px;
     line-height: 17px;
     font-weight: $weight;

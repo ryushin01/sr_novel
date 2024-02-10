@@ -1,0 +1,143 @@
+@charset "urf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/theme.scss', '@scss/partials/typography.scss';
+
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .footer {
+      width: 100%;
+      border-top: 1px $grayscale-3 solid;
+      background-color: $grayscale-4;
+      color: $grayscale-1;
+
+      .inner-wrap {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 27px 10px 60px 160px;
+
+        h1 {
+          @include Position(absolute, $top: 27px, $left: 10px);
+          @include Typography(4xl, 700);
+          color: $primary-color;
+
+          // 삭제 후 커밋
+          font-size: 26px;
+          line-height: 1;
+        }
+
+        ul {
+          display: flex;
+
+          li {
+            position: relative;
+
+            &::after {
+              @include Position(absolute, $top: 50%, $right: 0);
+              content: '';
+              display: block;
+              width: 1px;
+              height: 8px;
+              background-color: $grayscale-2;
+              transform: translateY(-50%);
+            }
+
+            &:last-child {
+              &::after {
+                display: none;
+              }
+            }
+          }
+
+          &.footer-link-list {
+            gap: 20px;
+
+            li {
+              padding-right: 20px;
+
+              &:nth-child(2) {
+                color: $primary-color;
+              }
+
+              &:last-child {
+                padding-right: 0;
+              }
+            }
+          }
+
+          &.company-info-list {
+            padding-bottom: 8px;
+            gap: 6px;
+
+            li {
+              @include Typography(3xs);
+              padding-right: 6px;
+              color: $grayscale-2;
+
+              &:last-child {
+                padding-right: 0;
+              }
+            }
+          }
+        }
+
+        .copyright {
+          @include Typography(3xs);
+          display: block;
+          color: $grayscale-2;
+        }
+      }
+    }
+
+    @include Mobile {
+      .footer {
+        .inner-wrap {
+          padding: 15px 20px;
+          gap: 0;
+
+          h1 {
+            @include Typography(2xs);
+            position: static;
+            margin-top: 15px;
+          }
+
+          ul {
+            @include Typography(4xs);
+
+            &.footer-link-list {
+              justify-content: center;
+            }
+
+            &.company-info-list {
+              display: flex;
+              flex-direction: column;
+              padding-bottom: 10px;
+              gap: 0;
+
+              li {
+                &::after {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
+}
