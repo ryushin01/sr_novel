@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import { customAxios } from '../../config';
 import Button from '@components/Button/Button';
+import ToggleButton from './components/ToggleButton/ToggleButton';
+import FilterButton from './components/FilterButton.jsx/FilterButton';
 
 import './BookDetail.scss';
-import ToggleButton from './ToggleButton/ToggleButton';
 
 const BookDetail = () => {
   const [bookItemInfo, setBookItemInfo] = useState([]);
   const [descriptionToggle, setDescriptionToggle] = useState(true);
 
   const params = useParams();
-  const navigate = useNavigate();
   const API_KEY = import.meta.env.VITE_ALADDIN_API_KEY;
   const API_URL = `ttb/api/ItemLookUp.aspx?ttbkey=${API_KEY}&itemIdType=ISBN&ItemId=${params.isbn13}&Cover=Big&output=js&Version=20131101&
   OptResult=ebookList,usedList,fileFormatList,previewImgList`;
@@ -101,14 +101,7 @@ const BookDetail = () => {
       <section className="book-detail-episode-list-wrapper">
         <h3 className="book-detail-episode-list-title">
           <span>최신 업데이트</span>
-          <div className="book-detail-filter-btn-wrap">
-            <button type="button" className="book-detail-filter-btn-1">
-              최신화부터
-            </button>
-            <button type="button" className="book-detail-filter-btn-2">
-              첫화부터
-            </button>
-          </div>
+          <FilterButton />
         </h3>
         <div className="book-detail-episode-list-wrap">
           <ul className="book-detail-episode-list">

@@ -295,17 +295,28 @@
 
               & > a {
                 color: $grayscale-1;
-                text-decoration: none;
+
+                @include Mobile {
+                  @include Typography(xs, 700);
+                }
               }
 
               & > span {
                 @include Typography(xs, 400);
                 color: $grayscale-3;
+
+                @include Mobile {
+                  @include Typography(2xs, 400);
+                }
               }
             }
             & > span {
               @include Typography(xs, 400);
               color: $grayscale-2;
+
+              @include Mobile {
+                @include Typography(2xs, 400);
+              }
             }
           }
         }
