@@ -9,7 +9,7 @@ const ListContentsTitle = ({ bookData, direction, rank }) => {
     <div className="book-list-contents-title">
       {rank && <span>북 랭킹 : {bestRank}</span>}
       <h3>
-        <Link to={`/detail:${isbn13}`}>{title}</Link>
+        <Link to={`/detail/${isbn13}`}>{title}</Link>
       </h3>
       <h4>{authorSplit}</h4>
       {!direction && !rank && <span>출판일 : {pubDate}</span>}
