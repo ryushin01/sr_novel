@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { customAxios } from '../../config';
 import Button from '@components/Button/Button';
@@ -51,7 +51,7 @@ const BookDetail = () => {
                 </span>
                 <h2 className="book-detail-info-title">{info.title}</h2>
                 <span className="book-detail-info-author">
-                  {info.author} / {info.publisher}
+                  {info.author} | {info.publisher}
                 </span>
                 <span className="book-detail-info-standard-price">
                   정가 : {info.priceStandard.toLocaleString()}원
@@ -92,6 +92,37 @@ const BookDetail = () => {
             />
           );
         })}
+      </section>
+      <div className="book-detail-event-banner" />
+      <div className="book-detail-first-episode-btn">
+        <Button size="large" content="첫화 무료로 보러가기" color="primary" />
+      </div>
+
+      <section className="book-detail-episode-list-wrapper">
+        <h3 className="book-detail-episode-list-title">
+          <span>최신 업데이트</span>
+          <div className="book-detail-filter-btn-wrap">
+            <button type="button" className="book-detail-filter-btn-1">
+              최신화부터
+            </button>
+            <button type="button" className="book-detail-filter-btn-2">
+              첫화부터
+            </button>
+          </div>
+        </h3>
+        <div className="book-detail-episode-list-wrap">
+          <ul className="book-detail-episode-list">
+            <li className="book-detail-episode-list-items">
+              <div className="episode-list-items-wrap">
+                <h4 className="episode-list-items-title">
+                  <Link to="#">1화 - 모험의 시작</Link>
+                  <span>2021.08.02</span>
+                </h4>
+                <span>별점, 댓글</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
     </main>
   );

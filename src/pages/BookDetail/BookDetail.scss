@@ -22,6 +22,7 @@
     & > .book-detail-info {
       display: flex;
       width: 100%;
+      position: relative;
 
       & > .book-detail-info-img {
         width: 30%;
@@ -29,6 +30,15 @@
         max-height: 400px;
         padding: 20px;
         border-radius: 12px;
+
+        @include Mobile {
+          width: 95px;
+          height: 150px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0;
+        }
 
         img {
           height: 100%;
@@ -42,20 +52,39 @@
         flex-direction: column;
         width: 70%;
 
+        @include Mobile {
+          width: 100%;
+          padding-left: 100px;
+        }
+
         & > .book-detail-info-category {
           @include Typography(xs, 400);
           color: $grayscale-3;
+
+          @include Mobile {
+            @include Typography(2xs, 400);
+            @include Ellipsis(true, 1);
+          }
         }
 
         & > .book-detail-info-title {
           @include Typography(3xl, 700);
           color: $grayscale-1;
           padding: 5px 0;
+
+          @include Mobile {
+            @include Typography(2xl, 700);
+          }
         }
 
         & > .book-detail-info-author {
           @include Typography(xs, 400);
           color: $grayscale-2;
+
+          @include Mobile {
+            @include Typography(2xs, 400);
+            @include Ellipsis(true, 1);
+          }
         }
 
         & > .book-detail-info-standard-price {
@@ -63,12 +92,20 @@
           text-decoration: line-through;
           color: #ff0000;
           padding: 10px 0;
+
+          @include Mobile {
+            @include Typography(lg, 400);
+          }
         }
 
         & > .book-detail-info-sales-price {
           @include Typography(2xl, 700);
           color: $grayscale-1;
           padding-bottom: 20px;
+
+          @include Mobile {
+            @include Typography(lg, 700);
+          }
         }
 
         & > .book-detail-info-description {
@@ -78,8 +115,16 @@
           padding: 0 20px 10px 0;
           color: $grayscale-2;
 
+          @include Mobile {
+            @include Typography(2xs, 400);
+          }
+
           & > .active {
             @include Ellipsis(true, 2);
+
+            @include Mobile {
+              @include Ellipsis(true, 4);
+            }
           }
 
           & > .book-detail-info-description-toggle {
@@ -146,6 +191,124 @@
         transform: translateY(-50%);
         background-image: url('@images/ticket.png');
         background-size: contain;
+      }
+    }
+  }
+
+  & > .book-detail-event-banner {
+    width: 100%;
+    max-width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-image: url('@images/main_banner_2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  & > .book-detail-first-episode-btn {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  & > .book-detail-episode-list-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    & > .book-detail-episode-list-title {
+      @include Typography(2xl, 700);
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      margin: 0 10px;
+      border-bottom: 1px solid $grayscale-3;
+
+      & > .book-detail-filter-btn-wrap {
+        display: flex;
+
+        & > .book-detail-filter-btn-1 {
+          @include Typography(2xs, 400);
+          margin-right: 10px;
+          position: relative;
+          color: $grayscale-1;
+          cursor: pointer;
+
+          &::before {
+            content: '';
+            width: 1px;
+            height: 10px;
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+            background-color: $grayscale-3;
+          }
+
+          &.active {
+            @include Typography(xs, 700);
+            color: $primary-color;
+          }
+        }
+        & > .book-detail-filter-btn-2 {
+          @include Typography(2xs, 400);
+          color: $grayscale-1;
+          cursor: pointer;
+
+          &.active {
+            @include Typography(xs, 700);
+            color: $primary-color;
+          }
+        }
+      }
+    }
+
+    & > .book-detail-episode-list-wrap {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      padding: 0 10px;
+
+      & > .book-detail-episode-list {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid $grayscale-3;
+
+        & > .book-detail-episode-list-items {
+          @include Typography(lg, 700);
+
+          & > .episode-list-items-wrap {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 10px;
+            gap: 5px;
+
+            & > .episode-list-items-title {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              gap: 5px;
+              color: $grayscale-1;
+
+              & > a {
+                color: $grayscale-1;
+                text-decoration: none;
+              }
+
+              & > span {
+                @include Typography(xs, 400);
+                color: $grayscale-3;
+              }
+            }
+            & > span {
+              @include Typography(xs, 400);
+              color: $grayscale-2;
+            }
+          }
+        }
       }
     }
   }
