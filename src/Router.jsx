@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import BestSeller from './pages/BestSeller/BestSeller';
 import BookDetail from './pages/BookDetail/BookDetail';
 import Footer from './components/Footer/Footer';
+import Viewer from './pages/Viewer/Viewer';
 
 const Router = () => {
   return (
@@ -15,6 +16,10 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/bestseller" element={<BestSeller />} />
         <Route path="/detail/:isbn13" element={<BookDetail />} />
+        <Route path="/viewer/:chapterNumber" element={<Viewer />} />
+
+        {/* 404 */}
+        {/* <Route path="*" element={<Error />} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>

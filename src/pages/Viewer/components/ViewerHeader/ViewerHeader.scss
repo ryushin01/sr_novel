@@ -1,0 +1,78 @@
+@charset "urf-8";
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
+@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
+@import '@scss/partials/Typography.scss';
+
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .viewer-header {
+      width: 100%;
+      border-top: 1px $grayscale-3 solid;
+      background-color: $grayscale-4;
+      color: $grayscale-1;
+
+      .inner-wrap {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 10px;
+
+        h2 {
+          @include Ellipsis(false, 1);
+          @include Typography(xl);
+          width: 60%;
+          margin: 0 auto;
+          padding: 18px 0;
+        }
+
+        .btn-viewer-setting {
+          @include Position(absolute, $top: 50%, $right: 10px);
+          @include Ir();
+          width: 32px;
+          height: 32px;
+          transform: translateY(-50%);
+          background-image: url(@svg/viewer/icon_setting_#{$theme}.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 25px;
+
+          &.active {
+            background-image: url(@svg/viewer/icon_setting_active.svg);
+          }
+        }
+      }
+    }
+
+    @include Mobile {
+      .viewer-header {
+        .inner-wrap {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 0 20px;
+
+          h2 {
+            width: 70%;
+            margin: 0;
+          }
+
+          .btn-viewer-setting {
+            right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
+}
