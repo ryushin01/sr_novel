@@ -2,9 +2,11 @@ import EpisodeListItem from './EpisodeListItem';
 
 const EpisodeList = ({ episodeData }) => {
   return (
-    <ul className="book-detail-episode-list">
-      <EpisodeListItem episodeData={episodeData} />
-    </ul>
+    <div className="book-detail-episode-list-wrap">
+      <ul className="book-detail-episode-list">
+        <EpisodeListItem episodeData={episodeData} />
+      </ul>
+    </div>
   );
 };
 
