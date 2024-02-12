@@ -1,11 +1,21 @@
 @charset "urf-8";
-@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
-@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
-@import '@scss/partials/Typography.scss';
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss',
+  '@scss/partials/media_query.scss', '@scss/partials/Typography.scss';
 
 @mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   .#{$theme} {
-    display: block;
+    .viewer-content {
+      padding: 50px 80px;
+      background-color: #e5e5e5;
+      color: #333;
+
+      // 임시값
+      height: 2000px;
+
+      p {
+        @include Typography(2xl);
+      }
+    }
   }
 }
 

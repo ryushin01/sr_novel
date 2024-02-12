@@ -4,7 +4,7 @@ import './ViewerMain.scss';
 
 const ViewerMain = () => {
   return (
-    <section>
+    <section className="viewer-main">
       <ViewerContent />
       <ViewerMetadata />
     </section>

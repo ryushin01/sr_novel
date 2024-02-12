@@ -1,16 +1,16 @@
 @charset "urf-8";
-@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
-@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
-@import '@scss/partials/Typography.scss';
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss',
+  '@scss/partials/media_query.scss', '@scss/partials/Typography.scss';
 
 @mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   .#{$theme} {
     .viewer-header {
+      @include Position(sticky, $top: 78px);
       width: 100%;
       border-top: 1px $grayscale-3 solid;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.09);
       background-color: $grayscale-4;
       color: $grayscale-1;
-
       .inner-wrap {
         position: relative;
         max-width: 1200px;

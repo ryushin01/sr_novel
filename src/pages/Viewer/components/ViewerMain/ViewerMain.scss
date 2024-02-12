@@ -5,7 +5,10 @@
 
 @mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   .#{$theme} {
-    display: block;
+    .viewer-main {
+      max-width: 940px;
+      margin: 0 auto;
+    }
   }
 }
 
