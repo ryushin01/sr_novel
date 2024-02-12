@@ -5,6 +5,7 @@
 .btn {
   @include FlexCenter();
   border: 1px transparent solid;
+  white-space: nowrap;
 
   &.small {
     padding: 7px 15px;
