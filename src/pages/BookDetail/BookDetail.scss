@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 100px;
   gap: 20px;
 
   & > .book-detail-info-wrap {
@@ -18,6 +19,10 @@
     border-radius: 10px;
     margin: 0 auto;
     padding: 20px;
+
+    @include Mobile {
+      border : none;
+    }
 
     & > .book-detail-info {
       display: flex;
@@ -54,7 +59,13 @@
 
         @include Mobile {
           width: 100%;
-          padding-left: 100px;
+          padding-left: 120px;
+        }
+
+        & > .book-detail-info-badge {
+          display: flex;
+          width: 100%;
+          padding-bottom: 5px;
         }
 
         & > .book-detail-info-category {
@@ -101,10 +112,111 @@
         & > .book-detail-info-sales-price {
           @include Typography(2xl, 700);
           color: $grayscale-1;
-          padding-bottom: 20px;
+          padding-bottom: 10px;
 
           @include Mobile {
             @include Typography(lg, 700);
+          }
+        }
+
+        & > .book-detail-info-publish-wrap {
+          @include Typography(xs, 400);
+          display: flex;
+          flex-wrap: wrap;
+          padding-bottom: 10px;
+
+          & > span {
+            @include Typography(2xs, 400);
+            position: relative;
+            color: $grayscale-2;
+            padding-right: 10px;
+            margin-right: 10px;
+
+            @include Mobile {
+              @include Typography(3xs, 400);
+            }
+
+            &::before {
+              content: '';
+              width: 1px;
+              height: 15px;
+              position: absolute;
+              top: 50%;
+              right: 0px;
+              transform: translateY(-50%);
+              background-color: $grayscale-3;
+            }
+
+            &:last-child::before {
+              display: none;
+            }
+          }
+        }
+
+        & > .book-detail-info-eval-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          padding-bottom: 10px;
+          gap: 10px;
+
+          & > span {
+            @include Typography(2xs, 400);
+            position: relative;
+            padding-left: 20px;
+            color: $grayscale-2;
+
+            &:first-child::after {
+              content: '';
+              width: 15px;
+              height: 15px;
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              background-image: url('@images/views.png');
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+
+            &:nth-child(2)::after {
+              content: '';
+              width: 15px;
+              height: 15px;
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              background-image: url('@images/like.png');
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+
+            &:nth-child(3):after {
+              content: '';
+              width: 15px;
+              height: 15px;
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              background-image: url('@images/rating.png');
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+
+            &:last-child:after {
+              content: '';
+              width: 15px;
+              height: 15px;
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              background-image: url('@images/comments.png');
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
           }
         }
 
@@ -273,20 +385,30 @@
 
       & > .book-detail-episode-list {
         display: flex;
+        flex-direction: column;
         width: 100%;
         border-bottom: 1px solid $grayscale-3;
 
         & > .book-detail-episode-list-items {
           @include Typography(lg, 700);
+          width: 100%;
+          border-bottom: 1px solid $grayscale-3;
 
           & > .episode-list-items-wrap {
             display: flex;
-            flex-direction: column;
             width: 100%;
             padding: 10px;
             gap: 5px;
 
-            & > .episode-list-items-title {
+            & > .episode-list-items-is-free {
+              @include FlexCenter;
+              @include Typography(xs, 700);
+              flex-direction: column;
+              width: 50px;
+              gap: 10px;
+            }
+
+            & > .episode-list-items-title-wrap {
               display: flex;
               flex-direction: column;
               width: 100%;
@@ -294,6 +416,7 @@
               color: $grayscale-1;
 
               & > a {
+                @include Typography(lg, 700);
                 color: $grayscale-1;
 
                 @include Mobile {
@@ -301,21 +424,67 @@
                 }
               }
 
-              & > span {
+              & > .episode-list-items-date-wrap {
                 @include Typography(xs, 400);
                 color: $grayscale-3;
 
-                @include Mobile {
+                & > span {
                   @include Typography(2xs, 400);
+                  position: relative;
+                  padding-right: 10px;
+                  margin-right: 10px;
+
+                  &::before {
+                    content: '';
+                    width: 1px;
+                    height: 10px;
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    background-color: $grayscale-3;
+                  }
+                  &:last-child::before {
+                    display: none;
+                  }
                 }
               }
-            }
-            & > span {
-              @include Typography(xs, 400);
-              color: $grayscale-2;
-
-              @include Mobile {
+              & > .episode-list-items-eval-wrap {
                 @include Typography(2xs, 400);
+                display: flex;
+                color: $grayscale-3;
+                gap: 10px;
+
+                & > span {
+                  position: relative;
+                  padding-left: 20px;
+
+                  &:first-child:after {
+                    content: '';
+                    width: 15px;
+                    height: 15px;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    background-image: url('@images/rating.png');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                  }
+
+                  &:last-child:after {
+                    content: '';
+                    width: 15px;
+                    height: 15px;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    background-image: url('@images/comments.png');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                  }
+                }
               }
             }
           }
