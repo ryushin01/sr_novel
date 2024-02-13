@@ -1,488 +1,520 @@
+@charset "urf-8";
 @import '@scss/partials/grid_system.scss';
 @import '@scss/partials/media_query.scss';
 @import '@scss/partials/typography.scss';
 @import '@scss/partials/mixin.scss';
 @import '@scss/partials/theme.scss';
 
-.book-detail-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 100px;
-  gap: 20px;
-
-  & > .book-detail-info-wrap {
-    @include FlexCenter;
-    width: 100%;
-    max-width: 1200px;
-    border: 1px solid $grayscale-3;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 20px;
-
-    @include Mobile {
-      border : none;
-    }
-
-    & > .book-detail-info {
-      display: flex;
-      width: 100%;
-      position: relative;
-
-      & > .book-detail-info-img {
-        width: 30%;
-        height: auto;
-        max-height: 400px;
-        padding: 20px;
-        border-radius: 12px;
-
-        @include Mobile {
-          width: 95px;
-          height: 150px;
-          position: absolute;
-          top: 0;
-          left: 0;
-          padding: 0;
-        }
-
-        img {
-          height: 100%;
-          object-fit: contain;
-          aspect-ratio: 2/3;
-        }
-      }
-
-      & > .book-detail-info-text {
-        display: flex;
-        flex-direction: column;
-        width: 70%;
-
-        @include Mobile {
-          width: 100%;
-          padding-left: 120px;
-        }
-
-        & > .book-detail-info-badge {
-          display: flex;
-          width: 100%;
-          padding-bottom: 5px;
-        }
-
-        & > .book-detail-info-category {
-          @include Typography(xs, 400);
-          color: $grayscale-3;
-
-          @include Mobile {
-            @include Typography(2xs, 400);
-            @include Ellipsis(true, 1);
-          }
-        }
-
-        & > .book-detail-info-title {
-          @include Typography(3xl, 700);
-          color: $grayscale-1;
-          padding: 5px 0;
-
-          @include Mobile {
-            @include Typography(2xl, 700);
-          }
-        }
-
-        & > .book-detail-info-author {
-          @include Typography(xs, 400);
-          color: $grayscale-2;
-
-          @include Mobile {
-            @include Typography(2xs, 400);
-            @include Ellipsis(true, 1);
-          }
-        }
-
-        & > .book-detail-info-standard-price {
-          @include Typography(xl, 400);
-          text-decoration: line-through;
-          color: #ff0000;
-          padding: 10px 0;
-
-          @include Mobile {
-            @include Typography(lg, 400);
-          }
-        }
-
-        & > .book-detail-info-sales-price {
-          @include Typography(2xl, 700);
-          color: $grayscale-1;
-          padding-bottom: 10px;
-
-          @include Mobile {
-            @include Typography(lg, 700);
-          }
-        }
-
-        & > .book-detail-info-publish-wrap {
-          @include Typography(xs, 400);
-          display: flex;
-          flex-wrap: wrap;
-          padding-bottom: 10px;
-
-          & > span {
-            @include Typography(2xs, 400);
-            position: relative;
-            color: $grayscale-2;
-            padding-right: 10px;
-            margin-right: 10px;
-
-            @include Mobile {
-              @include Typography(3xs, 400);
-            }
-
-            &::before {
-              content: '';
-              width: 1px;
-              height: 15px;
-              position: absolute;
-              top: 50%;
-              right: 0px;
-              transform: translateY(-50%);
-              background-color: $grayscale-3;
-            }
-
-            &:last-child::before {
-              display: none;
-            }
-          }
-        }
-
-        & > .book-detail-info-eval-wrap {
-          display: flex;
-          flex-wrap: wrap;
-          width: 100%;
-          padding-bottom: 10px;
-          gap: 10px;
-
-          & > span {
-            @include Typography(2xs, 400);
-            position: relative;
-            padding-left: 20px;
-            color: $grayscale-2;
-
-            &:first-child::after {
-              content: '';
-              width: 15px;
-              height: 15px;
-              position: absolute;
-              top: 50%;
-              left: 0;
-              transform: translateY(-50%);
-              background-image: url('@images/views.png');
-              background-repeat: no-repeat;
-              background-size: contain;
-            }
-
-            &:nth-child(2)::after {
-              content: '';
-              width: 15px;
-              height: 15px;
-              position: absolute;
-              top: 50%;
-              left: 0;
-              transform: translateY(-50%);
-              background-image: url('@images/like.png');
-              background-repeat: no-repeat;
-              background-size: contain;
-            }
-
-            &:nth-child(3):after {
-              content: '';
-              width: 15px;
-              height: 15px;
-              position: absolute;
-              top: 50%;
-              left: 0;
-              transform: translateY(-50%);
-              background-image: url('@images/rating.png');
-              background-repeat: no-repeat;
-              background-size: contain;
-            }
-
-            &:last-child:after {
-              content: '';
-              width: 15px;
-              height: 15px;
-              position: absolute;
-              top: 50%;
-              left: 0;
-              transform: translateY(-50%);
-              background-image: url('@images/comments.png');
-              background-repeat: no-repeat;
-              background-size: contain;
-            }
-          }
-        }
-
-        & > .book-detail-info-description {
-          @include Typography(xs, 400);
-          display: flex;
-          flex-direction: column;
-          padding: 0 20px 10px 0;
-          color: $grayscale-2;
-
-          @include Mobile {
-            @include Typography(2xs, 400);
-          }
-
-          & > .active {
-            @include Ellipsis(true, 2);
-
-            @include Mobile {
-              @include Ellipsis(true, 4);
-            }
-          }
-
-          & > .book-detail-info-description-toggle {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            position: relative;
-            margin: 20px 20px 0 0;
-            border: none;
-            font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
-
-            &::before {
-              content: '';
-              width: 10px;
-              height: 10px;
-              position: absolute;
-              top: 50%;
-              right: -20px;
-              transform: translateY(-50%);
-              background-image: url('@images/up_arrow.png');
-              background-repeat: no-repeat;
-              background-size: contain;
-            }
-            &.open::before {
-              background-image: url('@images/down_arrow.png');
-            }
-          }
-        }
-
-        & > .book-detail-info-hashtag {
-          @include Typography(xs, 400);
-          display: flex;
-          gap: 10px;
-          color: $grayscale-1;
-        }
-      }
-    }
-  }
-
-  & > .book-detail-content-buy-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid $grayscale-3;
-    border-radius: 10px;
-
-    & > .book-detail-content-buy {
-      @include Typography(xs, 700);
-      display: flex;
-      padding-left: 35px;
-      position: relative;
-
-      &::after {
-        content: '';
-        width: 28px;
-        height: 28px;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        background-image: url('@images/ticket.png');
-        background-size: contain;
-      }
-    }
-  }
-
-  & > .book-detail-event-banner {
-    width: 100%;
-    max-width: 1200px;
-    height: 100px;
-    margin: 0 auto;
-    border-radius: 10px;
-    background-image: url('@images/main_banner_2.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  & > .book-detail-first-episode-btn {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  & > .book-detail-episode-list-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    & > .book-detail-episode-list-title {
-      @include Typography(2xl, 700);
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 10px;
-      margin: 0 10px;
-      border-bottom: 1px solid $grayscale-3;
-
-      & > .book-detail-filter-btn-wrap {
-        display: flex;
-
-        & > .book-detail-filter-btn-1 {
-          @include Typography(2xs, 400);
-          margin-right: 10px;
-          position: relative;
-          color: $grayscale-1;
-          cursor: pointer;
-
-          &::before {
-            content: '';
-            width: 1px;
-            height: 10px;
-            position: absolute;
-            top: 50%;
-            right: -5px;
-            transform: translateY(-50%);
-            background-color: $grayscale-3;
-          }
-
-          &.active {
-            @include Typography(xs, 700);
-            color: $primary-color;
-          }
-        }
-        & > .book-detail-filter-btn-2 {
-          @include Typography(2xs, 400);
-          color: $grayscale-1;
-          cursor: pointer;
-
-          &.active {
-            @include Typography(xs, 700);
-            color: $primary-color;
-          }
-        }
-      }
-    }
-
-    & > .book-detail-episode-list-wrap {
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .book-detail-container {
       display: flex;
       flex-direction: column;
       width: 100%;
-      height: auto;
-      padding: 0 10px;
+      padding: 30px 10px;
+      gap: 20px;
+      background-color: $grayscale-4;
 
-      & > .book-detail-episode-list {
-        display: flex;
-        flex-direction: column;
+      @include Mobile {
+        margin: 0;
+        padding: 10px 10px;
+      }
+
+      & > .book-detail-info-wrap {
+        @include FlexCenter;
         width: 100%;
-        border-bottom: 1px solid $grayscale-3;
+        max-width: 1200px;
+        border: 1px solid $grayscale-3;
+        border-radius: 10px;
+        margin: 0 auto;
+        padding: 20px 0;
 
-        & > .book-detail-episode-list-items {
-          @include Typography(lg, 700);
+        @include Mobile {
+          border: none;
+        }
+
+        & > .book-detail-info {
+          display: flex;
           width: 100%;
-          border-bottom: 1px solid $grayscale-3;
+          position: relative;
 
-          & > .episode-list-items-wrap {
-            display: flex;
-            width: 100%;
-            padding: 10px;
-            gap: 5px;
+          & > .book-detail-info-img {
+            width: 30%;
+            height: auto;
+            max-height: 400px;
+            padding: 20px;
+            border-radius: 12px;
 
-            & > .episode-list-items-is-free {
-              @include FlexCenter;
-              @include Typography(xs, 700);
-              flex-direction: column;
-              width: 50px;
-              gap: 10px;
+            @include Mobile {
+              width: 100px;
+              height: 150px;
+              position: absolute;
+              top: 5px;
+              left: 0;
+              padding: 0;
             }
 
-            & > .episode-list-items-title-wrap {
+            img {
+              height: 100%;
+              object-fit: contain;
+              aspect-ratio: 2/3;
+            }
+          }
+
+          & > .book-detail-info-text {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+
+            @include Mobile {
+              width: 100%;
+            }
+
+            & > .book-detail-info-title-wrap {
               display: flex;
               flex-direction: column;
-              width: 100%;
-              gap: 5px;
-              color: $grayscale-1;
 
-              & > a {
-                @include Typography(lg, 700);
-                color: $grayscale-1;
-
-                @include Mobile {
-                  @include Typography(xs, 700);
-                }
+              @include Mobile {
+                width: 100%;
+                padding-left: 120px;
               }
 
-              & > .episode-list-items-date-wrap {
+              & > .book-detail-info-badge {
+                display: flex;
+                width: 100%;
+                padding-bottom: 5px;
+              }
+
+              & > .book-detail-info-category {
                 @include Typography(xs, 400);
                 color: $grayscale-3;
 
-                & > span {
+                @include Mobile {
                   @include Typography(2xs, 400);
-                  position: relative;
-                  padding-right: 10px;
-                  margin-right: 10px;
-
-                  &::before {
-                    content: '';
-                    width: 1px;
-                    height: 10px;
-                    position: absolute;
-                    top: 50%;
-                    right: 0;
-                    transform: translateY(-50%);
-                    background-color: $grayscale-3;
-                  }
-                  &:last-child::before {
-                    display: none;
-                  }
+                  @include Ellipsis(true, 1);
                 }
               }
-              & > .episode-list-items-eval-wrap {
+
+              & > .book-detail-info-title {
+                @include Typography(3xl, 700);
+                color: $grayscale-1;
+                padding: 5px 0;
+
+                @include Mobile {
+                  @include Typography(xl, 700);
+                  @include Ellipsis(true, 1);
+                  padding: 0;
+                }
+              }
+
+              & > .book-detail-info-author {
+                @include Typography(xs, 400);
+                color: $grayscale-2;
+
+                @include Mobile {
+                  @include Typography(2xs, 400);
+                  @include Ellipsis(true, 1);
+                }
+              }
+
+              & > .book-detail-info-standard-price {
+                @include Typography(xl, 400);
+                text-decoration: line-through;
+                color: #ff0000;
+                padding: 10px 0;
+
+                @include Mobile {
+                  @include Typography(lg, 400);
+                }
+              }
+
+              & > .book-detail-info-sales-price {
+                @include Typography(2xl, 700);
+                color: $grayscale-1;
+                padding-bottom: 10px;
+
+                @include Mobile {
+                  @include Typography(lg, 700);
+                }
+              }
+            }
+
+            & > .book-detail-info-publish-wrap {
+              @include Typography(xs, 400);
+              display: flex;
+              flex-wrap: wrap;
+              padding-bottom: 10px;
+
+              & > span {
                 @include Typography(2xs, 400);
+                position: relative;
+                color: $grayscale-2;
+                padding-right: 10px;
+                margin-right: 10px;
+
+                @include Mobile {
+                  @include Typography(3xs, 400);
+                  margin-top: 10px;
+                }
+
+                &::before {
+                  content: '';
+                  width: 1px;
+                  height: 15px;
+                  position: absolute;
+                  top: 50%;
+                  right: 0px;
+                  transform: translateY(-50%);
+                  background-color: $grayscale-3;
+                }
+
+                &:last-child::before {
+                  display: none;
+                }
+              }
+            }
+
+            & > .book-detail-info-eval-wrap {
+              display: flex;
+              flex-wrap: wrap;
+              width: 100%;
+              padding-bottom: 10px;
+              gap: 10px;
+
+              & > span {
+                @include Typography(2xs, 400);
+                position: relative;
+                padding-left: 20px;
+                color: $grayscale-2;
+
+                &:first-child::after {
+                  content: '';
+                  width: 15px;
+                  height: 15px;
+                  position: absolute;
+                  top: 50%;
+                  left: 0;
+                  transform: translateY(-50%);
+                  background-image: url('@images/views.png');
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                }
+
+                &:nth-child(2)::after {
+                  content: '';
+                  width: 15px;
+                  height: 15px;
+                  position: absolute;
+                  top: 50%;
+                  left: 0;
+                  transform: translateY(-50%);
+                  background-image: url('@images/like.png');
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                }
+
+                &:nth-child(3):after {
+                  content: '';
+                  width: 15px;
+                  height: 15px;
+                  position: absolute;
+                  top: 50%;
+                  left: 0;
+                  transform: translateY(-50%);
+                  background-image: url('@images/rating.png');
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                }
+
+                &:last-child:after {
+                  content: '';
+                  width: 15px;
+                  height: 15px;
+                  position: absolute;
+                  top: 50%;
+                  left: 0;
+                  transform: translateY(-50%);
+                  background-image: url('@images/comments.png');
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                }
+              }
+            }
+
+            & > .book-detail-info-description {
+              @include Typography(xs, 400);
+              display: flex;
+              flex-direction: column;
+              padding: 0 20px 10px 0;
+              color: $grayscale-2;
+
+              @include Mobile {
+                @include Typography(2xs, 400);
+              }
+
+              & > .active {
+                @include Ellipsis(true, 2);
+
+                @include Mobile {
+                  @include Ellipsis(true, 4);
+                }
+              }
+
+              & > .book-detail-info-description-toggle {
                 display: flex;
-                color: $grayscale-3;
-                gap: 10px;
+                justify-content: flex-end;
+                width: 100%;
+                position: relative;
+                margin: 20px 20px 0 0;
+                padding-right: 10px;
+                border: none;
+                font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
+                color: $grayscale-2;
 
-                & > span {
-                  position: relative;
-                  padding-left: 20px;
+                &::before {
+                  content: '';
+                  width: 10px;
+                  height: 10px;
+                  position: absolute;
+                  top: 50%;
+                  right: -5px;
+                  transform: translateY(-50%);
+                  background-image: url('@svg/detail/icon_up_arrow_#{$theme}.svg');
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                }
+                &.open::before {
+                  background-image: url('@svg/detail/icon_down_arrow_#{$theme}.svg');
+                }
+              }
+            }
 
-                  &:first-child:after {
-                    content: '';
-                    width: 15px;
-                    height: 15px;
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    transform: translateY(-50%);
-                    background-image: url('@images/rating.png');
-                    background-repeat: no-repeat;
-                    background-size: contain;
+            & > .book-detail-info-hashtag {
+              @include Typography(xs, 400);
+              display: flex;
+              gap: 10px;
+              color: $grayscale-1;
+            }
+          }
+        }
+      }
+
+      & > .book-detail-content-buy-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid $grayscale-3;
+        border-radius: 10px;
+
+        & > .book-detail-content-buy {
+          @include Typography(xs, 700);
+          display: flex;
+          position: relative;
+          padding-left: 35px;
+          color: $grayscale-2;
+
+          &::after {
+            content: '';
+            width: 28px;
+            height: 28px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-image: url('@svg/detail/icon_ticket_#{$theme}.svg');
+            background-size: contain;
+          }
+        }
+      }
+
+      & > .book-detail-event-banner {
+        width: 100%;
+        max-width: 1200px;
+        height: 100px;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-image: url('@images/main_banner_2.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      & > .book-detail-first-episode-btn {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      & > .book-detail-episode-list-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        & > .book-detail-episode-list-title {
+          @include Typography(2xl, 700);
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 10px;
+          margin: 0 10px;
+          border-bottom: 1px solid $grayscale-3;
+          color: $grayscale-2;
+
+          & > .book-detail-filter-btn-wrap {
+            display: flex;
+
+            & > .book-detail-filter-btn-1 {
+              @include Typography(2xs, 400);
+              margin-right: 10px;
+              position: relative;
+              color: $grayscale-1;
+              cursor: pointer;
+
+              &::before {
+                content: '';
+                width: 1px;
+                height: 10px;
+                position: absolute;
+                top: 50%;
+                right: -5px;
+                transform: translateY(-50%);
+                background-color: $grayscale-3;
+              }
+
+              &.active {
+                @include Typography(xs, 700);
+                color: $primary-color;
+              }
+            }
+            & > .book-detail-filter-btn-2 {
+              @include Typography(2xs, 400);
+              color: $grayscale-1;
+              cursor: pointer;
+
+              &.active {
+                @include Typography(xs, 700);
+                color: $primary-color;
+              }
+            }
+          }
+        }
+
+        & > .book-detail-episode-list-wrap {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: auto;
+          padding: 0 10px;
+
+          & > .book-detail-episode-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border-bottom: 1px solid $grayscale-3;
+
+            & > .book-detail-episode-list-items {
+              @include Typography(lg, 700);
+              width: 100%;
+              border-bottom: 1px solid $grayscale-3;
+
+              & > .episode-list-items-wrap {
+                display: flex;
+                width: 100%;
+                padding: 10px;
+                gap: 5px;
+                color: $grayscale-2;
+
+                & > .episode-list-items-is-free {
+                  @include FlexCenter;
+                  @include Typography(xs, 700);
+                  flex-direction: column;
+                  width: 50px;
+                  gap: 10px;
+                }
+
+                & > .episode-list-items-title-wrap {
+                  display: flex;
+                  flex-direction: column;
+                  width: 100%;
+                  gap: 5px;
+                  color: $grayscale-1;
+
+                  @include Mobile {
+                    gap: 0;
                   }
 
-                  &:last-child:after {
-                    content: '';
-                    width: 15px;
-                    height: 15px;
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    transform: translateY(-50%);
-                    background-image: url('@images/comments.png');
-                    background-repeat: no-repeat;
-                    background-size: contain;
+                  & > a {
+                    @include Typography(lg, 700);
+                    color: $grayscale-1;
+
+                    @include Mobile {
+                      @include Typography(xs, 700);
+                    }
+                  }
+
+                  & > .episode-list-items-date-wrap {
+                    @include Typography(xs, 400);
+                    color: $grayscale-3;
+
+                    & > span {
+                      @include Typography(2xs, 400);
+                      position: relative;
+                      padding-right: 10px;
+                      margin-right: 10px;
+
+                      &::before {
+                        content: '';
+                        width: 1px;
+                        height: 10px;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        transform: translateY(-50%);
+                        background-color: $grayscale-3;
+                      }
+                      &:last-child::before {
+                        display: none;
+                      }
+                    }
+                  }
+                  & > .episode-list-items-eval-wrap {
+                    @include Typography(2xs, 400);
+                    display: flex;
+                    color: $grayscale-3;
+                    gap: 10px;
+
+                    & > span {
+                      position: relative;
+                      padding-left: 20px;
+
+                      &:first-child:after {
+                        content: '';
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        background-image: url('@images/rating.png');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                      }
+
+                      &:last-child:after {
+                        content: '';
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        background-image: url('@images/comments.png');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                      }
+                    }
                   }
                 }
               }
@@ -492,4 +524,18 @@
       }
     }
   }
+}
+
+// @each를 이용하여 테마를 적용하는데, in을 이용하여 $pallette를 순회하면서 각각의 테마를 적용시킵니다.
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  // @mixin을 이용하여 생성한 테마를 @include를 이용하여 적용시킵니다.
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
 }
