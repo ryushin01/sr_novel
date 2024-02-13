@@ -2,9 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import Header from './components/Header/Header';
-import BestSeller from './pages/BestSeller/BestSeller';
 import BookDetail from './pages/BookDetail/BookDetail';
 import Footer from './components/Footer/Footer';
+import List from './pages/List/List';
 
 const Router = () => {
   return (
@@ -13,7 +13,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/bestseller" element={<BestSeller />} />
+        <Route path="/list/:queryType" element={<List />} />
         <Route path="/detail/:isbn13" element={<BookDetail />} />
       </Routes>
       <Footer />
