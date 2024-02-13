@@ -18,7 +18,7 @@ const BookListSection = ({
 }) => {
   return (
     <div className="book-list-wrap">
-      <MainTitle to={link} title={title} />
+      <MainTitle link={link} title={title} />
       <BookList bookData={bookData} direction={direction} rank={rank} />
     </div>
   );
