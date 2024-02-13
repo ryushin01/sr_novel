@@ -23,17 +23,20 @@
 
       & > a {
         display: flex;
+        position: relative;
         color: $grayscale-1;
 
-        & > .main-title-svg {
-          @include FlexCenter;
-          padding-left: 10px;
-
-          & > svg {
-            width: 20px;
-            height: 20px;
-            fill: $grayscale-1;
-          }
+        &::before {
+          content: '';
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 50%;
+          right: -30px;
+          transform: translateY(-50%);
+          background-image: url('@svg/main/icon_right_arrow_#{$theme}.svg');
+          background-repeat: no-repeat;
+          background-size: 20px;
         }
       }
     }
