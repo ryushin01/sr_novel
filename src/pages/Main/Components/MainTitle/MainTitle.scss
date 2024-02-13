@@ -23,6 +23,7 @@
 
       & > a {
         display: flex;
+        color: $grayscale-1;
 
         & > .main-title-svg {
           @include FlexCenter;
