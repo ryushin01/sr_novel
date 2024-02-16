@@ -18,7 +18,7 @@
         align-items: center;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 23px 10px;
+        padding: 22px 10px;
 
         h1 {
           a {
@@ -27,14 +27,31 @@
           }
         }
 
+        .btn-group {
+          @include FlexCenter();
+          gap: 30px;
+
+          button,
+          a {
+            @include Ir();
+            width: 34px;
+            height: 34px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 30px;
+          }
+        }
+
+        .btn-signin {
+          background-image: url(@svg/header/icon_signin_#{$theme}.svg);
+        }
+
+        .btn-signup {
+          background-image: url(@svg/header/icon_signup_#{$theme}.svg);
+        }
+
         .link-search {
-          @include Ir();
-          width: 32px;
-          height: 32px;
           background-image: url(@svg/header/icon_search_#{$theme}.svg);
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 30px;
         }
       }
     }
@@ -42,7 +59,7 @@
     @include Mobile {
       .header {
         .inner-wrap {
-          padding: 9px 20px;
+          padding: 8px 20px;
 
           h1 {
             a {
@@ -50,8 +67,13 @@
             }
           }
 
-          .link-search {
-            background-size: 24px;
+          .btn-group {
+            gap: 14px;
+
+            button,
+            a {
+              background-size: 24px;
+            }
           }
         }
       }
