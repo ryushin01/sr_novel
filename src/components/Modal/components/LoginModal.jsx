@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { useInput } from '@customHooks/useInput';
+import { RegExp } from '@/RegExp';
+import { API } from '@/config';
 import CheckBox from '@components/CheckBox/CheckBox';
 import Input from '@components/Input/Input';
 import Button from '@components/Button/Button';
-import { RegExp } from '../../../RegExp';
 import axios from 'axios';
-import { API } from '../../../config';
 import './LoginModal.scss';
 
 const LoginModal = ({isModalOpen,setIsModalOpen}) => {
