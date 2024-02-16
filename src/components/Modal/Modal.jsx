@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import IconButton from '../IconButton/IconButton';
+import IconButton from '@components/IconButton/IconButton';
 import './Modal.scss';
 
 const Modal = ({ isModalOpen, setIsModalOpen, title, content }) => {
