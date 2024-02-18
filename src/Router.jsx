@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from './pages/Main/Main';
-import Login from './pages/Login/Login';
-import Header from './components/Header/Header';
-import BookDetail from './pages/BookDetail/BookDetail';
-import Footer from './components/Footer/Footer';
-import List from './pages/List/List';
+import Main from '@pages/Main/Main';
+import SignUp from '@pages/SignUp/SignUp';
+import List from '@pages/List/List';
+import Header from '@components/Header/Header';
+import BookDetail from '@pages/BookDetail/BookDetail';
+import Footer from '@components/Footer/Footer';
 
 const Router = () => {
   return (
@@ -12,7 +12,7 @@ const Router = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/list/:queryType" element={<List />} />
         <Route path="/detail/:isbn13" element={<BookDetail />} />
       </Routes>

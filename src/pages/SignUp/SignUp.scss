@@ -1,0 +1,55 @@
+
+@charset "urf-8";
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
+@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
+@import '@scss/partials/Typography.scss';
+
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .sign-up-container {
+        display : flex;
+        width : 100%;
+        padding : 20px;
+        color : $grayscale-1;
+        background-color : $grayscale-4;
+
+        .sign-up-inner-wrap {
+            @include FlexCenter;
+            flex-direction : column;
+            width : 100%;
+            max-width: 1200px;
+            height: 100%;
+            margin : 0 auto;
+
+            .sign-up-form-section {
+                width: 100%;
+
+                & legend {
+                    font-size : 0;
+                }
+
+                .sign-up-form-title {
+                    @include Typography(3xl, 700);
+                    padding-bottom: 20px;
+                    border-bottom : 1px solid $grayscale-2;
+                }
+            }
+        }
+    }
+
+}
+}
+
+// @each를 이용하여 테마를 적용하는데, in을 이용하여 $pallette를 순회하면서 각각의 테마를 적용시킵니다.
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  // @mixin을 이용하여 생성한 테마를 @include를 이용하여 적용시킵니다.
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
+}

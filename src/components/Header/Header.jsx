@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from '@components/Modal/Modal';
 import LoginModal from '@components/Modal/components/LoginModal';
 import './Header.scss';
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
@@ -22,7 +24,7 @@ const Header = () => {
           <button type="button" className="btn-signin" onClick={handleModalToggle}>
             로그인
           </button>
-          <button type="button" className="btn-signup">
+          <button type="button" className="btn-signup" onClick={() => navigate('/signup')}>
             회원가입
           </button>
           <Link to="/search" className="link-search">
