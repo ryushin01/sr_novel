@@ -6,7 +6,7 @@
     .input-container {
       display: flex;
       width: 100%;
-      padding: 10px;
+      padding: 10px 0;
       border-radius: 10px;
       background-color: $grayscale-4;
       color: $grayscale-1;
@@ -62,7 +62,21 @@
         width: 80px;
       }
 
-      .label-sign-up {
-        width: 120px;
+
+
+      .require {
+        position: relative;
+        
+        &::before {
+          content : '*';
+          width : 15px;
+          height : 15px;
+          position : absolute;
+          top : 50%;
+          right : -16px;
+          transform : translateY(-50%);
+          color : $primary-color;;
+        }
       }
+      
     }

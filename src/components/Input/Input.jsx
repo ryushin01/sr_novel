@@ -26,15 +26,16 @@ const Input = ({
   shape = 'round',
   contents,
   purpose,
+  require,
 }) => {
   return (
-    <div className="input-container">
+    <div className={`input-container ${purpose ? `container-${purpose}` : ''}`}>
       {contents && (
         <label
           htmlFor={id}
           className={`label ${purpose ? `label-${purpose}` : ''}`}
         >
-          {contents}
+          <span className={`${require ? 'require' : ''}`}>{contents}</span>
         </label>
       )}
       <input
@@ -48,6 +49,7 @@ const Input = ({
         value={value}
         size={size}
         shape={shape}
+
       />
     </div>
   );
