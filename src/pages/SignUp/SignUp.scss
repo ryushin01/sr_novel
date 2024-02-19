@@ -4,6 +4,36 @@
 @import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
 @import '@scss/partials/Typography.scss';
 
+@mixin SignUpText {
+    display :flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap : 5px;
+
+    & > span {
+        position : relative;
+        padding-left : 5px;
+        margin-left : 5px;
+        color : $grayscale-2;
+
+        &::before {
+            content : '*';
+            width : 15px;
+            height: 15px;
+            color : $primary-color;
+            position : absolute;
+            top : 50%;
+            left : -3px;
+            transform : translateY(-50%);
+        }
+    }
+
+
+    @include Mobile {
+        align-items: flex-end;
+    }
+}
+
 @mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   .#{$theme} {
     .sign-up-container {
@@ -21,6 +51,7 @@
             height: 100%;
             margin : 0 auto;
 
+
             .sign-up-form-section {
                 width: 100%;
 
@@ -32,6 +63,93 @@
                     @include Typography(3xl, 700);
                     padding-bottom: 20px;
                     border-bottom : 1px solid $grayscale-2;
+                }
+
+                .sign-up-form-wrap {
+                    display : flex;
+                    flex-direction: column;
+                    
+
+                    .container-sign-up {
+                        width : auto;
+
+                        @include Mobile {
+                            display : flex;
+                            flex-direction: column;
+                            gap : 10px;
+                            padding : 10px 0 0 0;
+                        }
+                    }
+
+                    .label-sign-up {
+                        width: 110px;
+
+                        @include Mobile {
+                            width: 90px;
+                        }
+                    }
+
+                      .input-sign-up {
+                        width: 335px;
+                    }
+                      
+
+                    .sign-up-id-wrap {
+                        display :flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap : 5px;
+
+                        @include Mobile {
+                            & > span {
+                                padding-bottom : 10px;
+                            }
+                        }
+
+                    .input-sign-up {
+                        width: 120px;
+
+                        @include Mobile {
+                        align-items: flex-end;
+
+                        .input-sign-up {
+                            width: 90px;
+                        }
+                    }
+                }
+            }
+
+                    .sign-up-password-wrap {
+                        @include SignUpText;
+
+                        @include Mobile {
+                            align-items: flex-end;
+                        }
+                    }
+
+                    .sign-up-name-wrap {
+                        @include SignUpText;
+
+                        @include Mobile {
+                            align-items: flex-end;
+                        }
+                    }
+
+                    .sign-up-birth-wrap {
+                        @include SignUpText;
+
+                        @include Mobile {
+                            align-items: flex-end;
+                        }
+                    }
+
+                    .sign-up-event-wrap {
+                        @include SignUpText;
+
+                        @include Mobile {
+                            align-items: flex-end;
+                        }
+                    }
                 }
             }
         }
