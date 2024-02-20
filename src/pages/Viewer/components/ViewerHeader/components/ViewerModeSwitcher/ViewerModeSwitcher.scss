@@ -1,0 +1,138 @@
+@charset "urf-8";
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss',
+  '@scss/partials/media_query.scss', '@scss/partials/typography.scss';
+
+.viewer-mode-switcher-layer {
+  @include Position(absolute, $top: 45px, $right: -30px);
+  width: 524px;
+  padding: 16px 30px 30px;
+  background-color: $grayscale-4;
+  border: 1px solid $grayscale-2;
+  border-radius: 10px;
+
+  &::before {
+    @include Position(absolute, $top: -20px, $right: 38px);
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-bottom: 12px solid $grayscale-2;
+    border-top: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+  }
+
+  &::after {
+    @include Position(absolute, $top: -15px, $right: 40px);
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid $grayscale-4;
+    border-top: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+
+  table {
+    caption {
+      @include Ir();
+      height: 0;
+    }
+
+    col:first-child {
+      width: 200px;
+    }
+
+    tr {
+      border-bottom: 1px $grayscale-3 solid;
+
+      &:last-child {
+        border-bottom: 0 none;
+      }
+    }
+
+    th,
+    td {
+      padding: 12px 0;
+      vertical-align: middle;
+      color: $grayscale-1;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    td {
+      text-align: right;
+    }
+  }
+
+  .icon {
+    padding-left: 30px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+
+    &.icon-font {
+      background-image: url(@svg/viewer/icon_font.svg);
+    }
+
+    &.icon-theme {
+      background-image: url(@svg/viewer/icon_theme.svg);
+    }
+  }
+
+  .font-list {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      button {
+        @include Typography(sm);
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0 10px;
+        line-height: 40px;
+        cursor: pointer;
+
+        &.active {
+          color: $primary-color;
+        }
+      }
+
+      &:nth-child(2) {
+        button {
+          font-family: 'seolleimcool-SemiBold';
+        }
+      }
+
+      &:nth-child(3) {
+        button {
+          font-family: 'Dovemayo_gothic';
+        }
+      }
+    }
+  }
+
+  .btn-area {
+    margin-top: 24px;
+  }
+}
+
+@include Mobile {
+  .viewer-mode-switcher-layer {
+    border-top: 1px $grayscale-2 solid;
+    right: -20px;
+    width: 100vw;
+    padding: 10px;
+    border: 0 none;
+    border-radius: 0;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}

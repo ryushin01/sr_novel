@@ -1,0 +1,60 @@
+@charset "urf-8";
+@import '@scss/partials/viewer_theme.scss', '@scss/partials/media_query.scss',
+  '@scss/partials/typography.scss';
+
+.viewer-content {
+  padding: 50px 80px;
+
+  &.pretendard {
+    font-family: 'Pretendard-Regular';
+  }
+
+  &.seolleimcool {
+    font-family: 'seolleimcool-SemiBold';
+  }
+
+  &.dovemayo {
+    font-family: 'Dovemayo_gothic';
+  }
+
+  &.default {
+    background-color: $bg-default-color;
+    color: $font-default-color;
+  }
+
+  &.white {
+    background-color: $bg-white-color;
+    color: $font-default-color;
+  }
+
+  &.cream {
+    background-color: $bg-cream-color;
+    color: $font-default-color;
+  }
+
+  &.green {
+    background-color: $bg-green-color;
+    color: $font-white-color;
+  }
+
+  &.gray {
+    background-color: $bg-gray-color;
+    color: $font-white-color;
+  }
+
+  &.black {
+    background-color: $bg-black-color;
+    color: $font-white-color;
+  }
+
+  p {
+    @include Typography(2xl);
+    white-space: pre-line;
+  }
+}
+
+@include Mobile {
+  .viewer-content {
+    padding: 12px 20px;
+  }
+}

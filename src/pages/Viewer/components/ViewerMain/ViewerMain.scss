@@ -1,0 +1,25 @@
+@charset "urf-8";
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
+@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
+@import '@scss/partials/Typography.scss';
+
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .viewer-main {
+      max-width: 940px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
+}

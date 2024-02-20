@@ -1,0 +1,75 @@
+@charset "urf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/viewer_theme.scss', '@scss/partials/theme.scss',
+  '@scss/partials/typography.scss';
+
+.input-radio {
+  @include FlexCenter();
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 1px transparent solid;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:nth-child(1) {
+    border-color: $primary-color;
+    background-color: $bg-white-color;
+    color: $font-default-color;
+  }
+
+  &:nth-child(2) {
+    border-color: $bg-default-color;
+    background-color: $bg-default-color;
+    color: $font-default-color;
+  }
+
+  &:nth-child(3) {
+    border-color: $bg-cream-color;
+    background-color: $bg-cream-color;
+    color: $font-default-color;
+  }
+
+  &:nth-child(4) {
+    border-color: $bg-green-color;
+    background-color: $bg-green-color;
+    color: $font-white-color;
+  }
+
+  &:nth-child(5) {
+    border-color: $bg-gray-color;
+    background-color: $bg-gray-color;
+    color: $font-white-color;
+  }
+
+  &:nth-child(6) {
+    border-color: $bg-black-color;
+    background-color: $bg-black-color;
+    color: $font-white-color;
+  }
+
+  input {
+    @include a11yHidden();
+
+    &:checked + span {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  span {
+    @include Typography(sm);
+
+    &::after {
+      @include Position(absolute, $top: 0, $right: 0);
+      content: '';
+      opacity: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      transition: opacity 0.1s linear;
+    }
+  }
+}
