@@ -1,4 +1,4 @@
-import Radio from '@components//Radio/Radio';
+import Radio from '@pages/Viewer/components/ViewerHeader/components/Radio/Radio';
 import './RadioGroup.scss';
 
 const RadioGroup = ({ data, name, value, defaultChecked, text, onChange }) => {

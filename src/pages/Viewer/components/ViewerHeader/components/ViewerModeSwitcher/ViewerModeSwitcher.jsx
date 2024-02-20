@@ -1,5 +1,5 @@
 import { VIEWER_FONT_DATA, VIEWER_THEME_DATA } from '@data/ViewerModeData';
-import RadioGroup from '@components/RadioGroup/RadioGroup';
+import RadioGroup from '@pages/Viewer/components/ViewerHeader/components/RadioGroup/RadioGroup';
 import Button from '@components/Button/Button';
 import './ViewerModeSwitcher.scss';
 
