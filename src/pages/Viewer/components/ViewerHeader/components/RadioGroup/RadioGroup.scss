@@ -1,0 +1,8 @@
+@charset "urf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/viewer_theme.scss', '@scss/partials/typography.scss';
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+}
