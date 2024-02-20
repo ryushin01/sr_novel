@@ -1,0 +1,24 @@
+@charset "urf-8";
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
+@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
+@import '@scss/partials/Typography.scss';
+
+    .icon-btn-container {
+      @include FlexCenter;
+
+      .icon-btn {
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      & > .close {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-image: url('@images/icon_close.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }

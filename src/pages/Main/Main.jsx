@@ -66,21 +66,21 @@ const Main = () => {
           />
           <div className="main-banner-1" />
           <BookListWrapper
-            link="#"
+            link="/list/ItemNewAll?title=[NEW] 이번에 나온 따끈따끈한 신작"
             title="[NEW] 이번에 나온 따끈따끈한 신작"
             bookData={newBooksData}
             direction={true}
           />
           <div className="main-banner-2" />
           <BookListWrapper
-            link="#"
+            link="/list/Bestseller?title=[BEST] 베스트셀러 리스트"
             title="[BEST] 베스트셀러 리스트"
             bookData={bsBooksData}
             direction={true}
           />
           <div className="main-banner-1" />
           <BookListWrapper
-            link="#"
+            link="/list/ItemNewSpecial?title=[NEW] 주목! 할만한 신간 리스트"
             title="[NEW] 주목! 할만한 신간 리스트"
             bookData={specialBooksData}
             direction={true}

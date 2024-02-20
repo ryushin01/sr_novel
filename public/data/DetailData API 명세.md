@@ -54,7 +54,7 @@
       // [Array] 작품의 회차 목록입니다.
       "chapterList": [
         {
-          // [Number] 회차 번호입니다.
+          // [Number] 회차 번호입니다. 이것을 기준으로 동적 라우팅합니다.
           "chapterNumber": 3,
 
           // [String] 회차 제목입니다.
@@ -76,7 +76,7 @@
           "isFree": false
         },
         {
-          "chapterNumber": 76,
+          "chapterNumber": 2,
           "chapterTitle": "2화",
           "updateDate": "2024.02.09",
           "totalLetters": 6036,
@@ -85,7 +85,7 @@
           "isFree": false
         },
         {
-          "chapterNumber": 76,
+          "chapterNumber": 1,
           "chapterTitle": "1화",
           "updateDate": "2024.02.08",
           "totalLetters": 6218,

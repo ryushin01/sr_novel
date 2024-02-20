@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { customAxios } from '../../config';
+import axios from 'axios';
+import { customAxios } from '@/config';
 import Button from '@components/Button/Button';
-import ToggleButton from './components/ToggleButton/ToggleButton';
-import FilterButton from './components/FilterButton.jsx/FilterButton';
+import EpisodeListSection from './components/episodeListSection/episodeListSection';
+import BookDetailInfoSection from './components/bookDetailInfoSection/bookDetailInfoSection';
+import Loading from '@pages/Loading/Loading';
 
 import './BookDetail.scss';
 
 const BookDetail = () => {
   const [bookItemInfo, setBookItemInfo] = useState([]);
+  const [bookDetailData, setBookDetailData] = useState([]);
   const [descriptionToggle, setDescriptionToggle] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const params = useParams();
   const API_KEY = import.meta.env.VITE_ALADDIN_API_KEY;
@@ -19,12 +23,37 @@ const BookDetail = () => {
 
   useEffect(() => {
     getBookDetailInfo();
+    getDetailData();
   }, []);
 
   const getBookDetailInfo = async () => {
     try {
       const response = await customAxios.get(API_URL);
       setBookItemInfo(response?.data?.item);
+
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getDetailData = async () => {
+    try {
+      const response = await axios.get('../data/DetailData.json');
+
+      if (params.isbn13 % 3 === 0) {
+        setBookDetailData(
+          response?.data?.result.filter(data => data.type === 'A'),
+        );
+      } else if (params.isbn13 % 3 === 1) {
+        setBookDetailData(
+          response?.data?.result.filter(data => data.type === 'B'),
+        );
+      } else {
+        setBookDetailData(
+          response?.data?.result.filter(data => data.type === 'C'),
+        );
+      }
     } catch (error) {
       console.error(error);
     }
@@ -34,90 +63,39 @@ const BookDetail = () => {
     setDescriptionToggle(!descriptionToggle);
   };
 
-  console.log(bookItemInfo);
-
   return (
-    <main className="book-detail-container">
-      <section className="book-detail-info-wrap">
-        {bookItemInfo.map(info => {
-          return (
-            <div className="book-detail-info" key={info.isbn13}>
-              <div className="book-detail-info-img">
-                <img src={info.cover} alt={info.title} />
-              </div>
-              <div className="book-detail-info-text">
-                <span className="book-detail-info-category">
-                  {info.categoryName}
-                </span>
-                <h2 className="book-detail-info-title">{info.title}</h2>
-                <span className="book-detail-info-author">
-                  {info.author} | {info.publisher}
-                </span>
-                <span className="book-detail-info-standard-price">
-                  정가 : {info.priceStandard.toLocaleString()}원
-                </span>
-                <span className="book-detail-info-sales-price">
-                  판매가 : {info.priceSales.toLocaleString()}원
-                </span>
-                <div className="book-detail-info-description">
-                  <p className={`${descriptionToggle ? 'active' : ''}`}>
-                    {info.description}
-                  </p>
-                  <ToggleButton
-                    handleDescriptionToggle={handleDescriptionToggle}
-                    descriptionToggle={descriptionToggle}
-                  />
-                </div>
-                <div className="book-detail-info-hashtag">
-                  <Button size="small" content="#판타지" color="grayscale" />
-                  <Button size="small" content="#환상소설" color="grayscale" />
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </section>
-      <section className="book-detail-content-buy-wrap">
-        <h3 className="book-detail-content-buy">보유 이용권 : 0 개</h3>
-        {bookItemInfo.map(({ link }) => {
-          return (
-            <Button
-              key={link}
-              size="small"
-              content="구매하기"
-              color="primary"
-              onClick={() => {
-                window.location.href = link; // onClick 시 외부링크로 이동하기 위한 방법
-              }}
-            />
-          );
-        })}
-      </section>
-      <div className="book-detail-event-banner" />
-      <div className="book-detail-first-episode-btn">
-        <Button size="large" content="첫화 무료로 보러가기" color="primary" />
-      </div>
-
-      <section className="book-detail-episode-list-wrapper">
-        <h3 className="book-detail-episode-list-title">
-          <span>최신 업데이트</span>
-          <FilterButton />
-        </h3>
-        <div className="book-detail-episode-list-wrap">
-          <ul className="book-detail-episode-list">
-            <li className="book-detail-episode-list-items">
-              <div className="episode-list-items-wrap">
-                <h4 className="episode-list-items-title">
-                  <Link to="#">1화 - 모험의 시작</Link>
-                  <span>2021.08.02</span>
-                </h4>
-                <span>별점, 댓글</span>
-              </div>
-            </li>
-          </ul>
+    <>
+      {loading && <Loading />}
+      <main className="book-detail-container">
+        <BookDetailInfoSection
+          bookItemInfo={bookItemInfo}
+          bookDetailData={bookDetailData}
+          descriptionToggle={descriptionToggle}
+          handleDescriptionToggle={handleDescriptionToggle}
+        />
+        <section className="book-detail-content-buy-wrap">
+          <h3 className="book-detail-content-buy">보유 이용권 : 0 개</h3>
+          {bookItemInfo.map(({ link }) => {
+            return (
+              <Button
+                key={link}
+                size="small"
+                content="구매하기"
+                color="primary"
+                onClick={() => {
+                  window.location.href = link; // onClick 시 외부링크로 이동하기 위한 방법
+                }}
+              />
+            );
+          })}
+        </section>
+        <div className="book-detail-event-banner" />
+        <div className="book-detail-first-episode-btn">
+          <Button size="large" content="첫화 무료로 보러가기" color="primary" />
         </div>
-      </section>
-    </main>
+        <EpisodeListSection episodeData={bookDetailData} />
+      </main>
+    </>
   );
 };
 
