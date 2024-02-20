@@ -5,7 +5,7 @@ import './ViewerHeader.scss';
 
 const ViewerHeader = ({ title, selectFondMode, selectThemeMode, fontMode }) => {
   const [isOpenViewerModeSwitcher, setIsOpenViewerModeSwitcher] =
-    useState(true);
+    useState(false);
 
   const toggleViewerModeSwitcherLayer = () => {
     setIsOpenViewerModeSwitcher(!isOpenViewerModeSwitcher);
