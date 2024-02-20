@@ -23,8 +23,14 @@
   }
 }
 
+@mixin MiniTablet {
+  @media all and (min-width: 430px) and (max-width: 768px) {
+    @content;
+  }
+}
+
 @mixin Mobile {
-  @media all and (min-width: 320px) and (max-width: 768px) {
+  @media all and (min-width: 320px) and (max-width: 430px) {
     @content;
   }
 }
