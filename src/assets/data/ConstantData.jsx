@@ -44,3 +44,18 @@ export const EMAIL_SELECT_DATA = [
     value: 'daum.net',
   },
 ];
+
+export const RADIO_DATA = [
+  {
+    id : 1,
+    name : "gender",
+    value : "남",
+    checked : true,
+  }, 
+  {
+    id : 2,
+    name : "gender",
+    value : "여",
+    checked : false,
+  }
+]
