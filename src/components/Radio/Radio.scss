@@ -1,0 +1,47 @@
+@charset "urf-8";
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
+@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
+@import '@scss/partials/Typography.scss';
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  padding: 18px 10px;
+
+  @include Mobile {
+    flex-direction: column;
+    padding: 10px 0 0 0;
+  }
+
+  .radio-label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+
+    .radio-input {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      border: 1px solid $grayscale-2;
+      border-radius: 50%;
+      appearance: none;
+      cursor: pointer;
+
+      &:checked::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        background-color: $primary-color;
+        background-size: contain;
+        border-radius: 50%;
+      }
+    }
+  }
+}
