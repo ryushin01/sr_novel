@@ -25,19 +25,22 @@
           padding: 18px 0;
         }
 
-        .btn-viewer-setting {
+        .viewer-mode-switcher-wrap {
           @include Position(absolute, $top: 50%, $right: 10px);
-          @include Ir();
-          width: 32px;
-          height: 32px;
           transform: translateY(-50%);
-          background-image: url(@svg/viewer/icon_setting_#{$theme}.svg);
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 25px;
 
-          &.active {
-            background-image: url(@svg/viewer/icon_setting_active.svg);
+          .btn-viewer-mode-switcher {
+            @include Ir();
+            width: 34px;
+            height: 34px;
+            background-image: url(@svg/viewer/icon_setting_#{$theme}.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 25px;
+
+            &.active {
+              background-image: url(@svg/viewer/icon_setting_active.svg);
+            }
           }
         }
       }
@@ -45,6 +48,8 @@
 
     @include Mobile {
       .viewer-header {
+        top: 50px;
+
         .inner-wrap {
           display: flex;
           align-items: center;
@@ -56,7 +61,7 @@
             margin: 0;
           }
 
-          .btn-viewer-setting {
+          .viewer-mode-switcher-wrap {
             right: 20px;
           }
         }

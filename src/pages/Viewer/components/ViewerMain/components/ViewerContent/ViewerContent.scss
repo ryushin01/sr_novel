@@ -1,32 +1,60 @@
 @charset "urf-8";
-@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss',
-  '@scss/partials/media_query.scss', '@scss/partials/Typography.scss';
+@import '@scss/partials/viewer_theme.scss', '@scss/partials/media_query.scss',
+  '@scss/partials/typography.scss';
 
-@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
-  .#{$theme} {
-    .viewer-content {
-      padding: 50px 80px;
-      background-color: #e5e5e5;
-      color: #333;
+.viewer-content {
+  padding: 50px 80px;
 
-      // 임시값
-      height: 2000px;
+  &.pretendard {
+    font-family: 'Pretendard-Regular';
+  }
 
-      p {
-        @include Typography(2xl);
-      }
-    }
+  &.seolleimcool {
+    font-family: 'seolleimcool-SemiBold';
+  }
+
+  &.dovemayo {
+    font-family: 'Dovemayo_gothic';
+  }
+
+  &.default {
+    background-color: $bg-default-color;
+    color: $font-default-color;
+  }
+
+  &.white {
+    background-color: $bg-white-color;
+    color: $font-default-color;
+  }
+
+  &.cream {
+    background-color: $bg-cream-color;
+    color: $font-default-color;
+  }
+
+  &.green {
+    background-color: $bg-green-color;
+    color: $font-white-color;
+  }
+
+  &.gray {
+    background-color: $bg-gray-color;
+    color: $font-white-color;
+  }
+
+  &.black {
+    background-color: $bg-black-color;
+    color: $font-white-color;
+  }
+
+  p {
+    @include Typography(2xl);
+    white-space: pre-line;
   }
 }
 
-@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
-  $grayscale-4 in $pallette
-{
-  @include theme(
-    $theme,
-    $grayscale-1,
-    $grayscale-2,
-    $grayscale-3,
-    $grayscale-4
-  );
+@include Mobile {
+  .viewer-content {
+    padding: 12px 20px;
+  }
 }
