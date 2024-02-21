@@ -3,80 +3,75 @@
 @import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
 @import '@scss/partials/Typography.scss';
 
-    .input-container {
-      display: flex;
-      width: 100%;
-      padding: 10px 0;
-      border-radius: 10px;
-      background-color: $grayscale-4;
-      color: $grayscale-1;
+.input-container {
+  display: flex;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 10px;
 
-      .input {
-        width: 100%;
-        height: 100%;
-        background-color: $grayscale-4;
-        color: $grayscale-1;
-      }
+  .input {
+    width: 100%;
+    height: 100%;
+    background-color: $grayscale-4;
+    color: $grayscale-1;
+  }
 
-      input::placeholder {
-        color: $grayscale-3;
-      }
+  input::placeholder {
+    color: $grayscale-3;
+  }
 
-      input:focus {
-        outline: none;
-      }
+  input:focus {
+    outline: none;
+  }
 
-      .small {
-        @include Typography(2xs, 400);
-        padding: 8px 8px;
-      }
+  .small {
+    @include Typography(2xs, 400);
+    padding: 8px 8px;
+  }
 
-      .medium {
-        @include Typography(xs, 400);
-        padding: 10px 10px;
-      }
+  .medium {
+    @include Typography(xs, 400);
+    padding: 10px 10px;
+  }
 
-      .large {
-        @include Typography(md, 400);
-        padding: 12px 12px;
-      }
+  .large {
+    @include Typography(md, 400);
+    padding: 12px 12px;
+  }
 
-      .round {
-        border: 1px solid $grayscale-3;
-        border-radius: 5px;
-      }
+  .round {
+    border: 1px solid $grayscale-3;
+    border-radius: 5px;
+  }
 
-      .border {
-        border: none;
-        border-bottom: 1px solid $grayscale-3;
-      }
+  .border {
+    border: none;
+    border-bottom: 1px solid $grayscale-3;
+  }
 
-      .label {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
+  .label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-      .label-login {
-        @include Typography(xs, 400);
-        width: 80px;
-      }
+  .label-login {
+    @include Typography(xs, 400);
+    width: 80px;
+  }
 
+  .require {
+    position: relative;
 
-
-      .require {
-        position: relative;
-        
-        &::before {
-          content : '*';
-          width : 15px;
-          height : 15px;
-          position : absolute;
-          top : 50%;
-          right : -16px;
-          transform : translateY(-50%);
-          color : $primary-color;;
-        }
-      }
-      
+    &::before {
+      content: '*';
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 50%;
+      right: -16px;
+      transform: translateY(-50%);
+      color: $primary-color;
     }
+  }
+}
