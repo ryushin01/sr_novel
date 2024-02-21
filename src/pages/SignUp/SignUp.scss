@@ -41,7 +41,7 @@
       color: $grayscale-1;
       background-color: $grayscale-4;
 
-      .sign-up-inner-wrap {
+      & > .sign-up-inner-wrap {
         @include FlexCenter;
         flex-direction: column;
         width: 100%;
@@ -49,7 +49,7 @@
         height: 100%;
         margin: 0 auto;
 
-        .sign-up-form-section {
+        & > .sign-up-form-section {
           width: 100%;
 
           & legend {
@@ -116,12 +116,14 @@
                 width: 120px;
 
                 @include Mobile {
-                  align-items: flex-end;
-
-                  .input-sign-up {
-                    width: 90px;
-                  }
+                  width: 100%;
                 }
+              }
+            }
+
+            .select-container {
+              @include Mobile {
+                width: 100%;
               }
             }
 
@@ -138,10 +140,28 @@
               @include SignUpText;
               width: 100%;
 
-              .input-sign-up {
-                width: 245px;
-              }
+              .sign-up-name-inner-wrap {
+                display: flex;
+                align-items: center;
+                gap: 5px;
 
+                @include Mobile {
+                  width: 100%;
+                  align-items: flex-end;
+
+                  & > button {
+                    margin-bottom: 5px;
+                  }
+                }
+
+                .input-sign-up {
+                  width: 245px;
+
+                  @include Mobile {
+                    width: 100%;
+                  }
+                }
+              }
               @include Mobile {
                 flex-direction: column;
                 align-items: flex-start;

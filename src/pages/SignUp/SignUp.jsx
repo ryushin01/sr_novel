@@ -72,20 +72,22 @@ const SignUp = () => {
                 />
 
                 <div className="sign-up-name-wrap">
-                  <Input
-                    type="text"
-                    contents="닉네임"
-                    placeholder="닉네임"
-                    purpose="sign-up"
-                    size="small"
-                    require
-                  />
-                  <Button
-                    type="button"
-                    content="중복확인"
-                    color="primary"
-                    size="small"
-                  />
+                  <div className="sign-up-name-inner-wrap">
+                    <Input
+                      type="text"
+                      contents="닉네임"
+                      placeholder="닉네임"
+                      purpose="sign-up"
+                      size="small"
+                      require
+                    />
+                    <Button
+                      type="button"
+                      content="중복확인"
+                      color="primary"
+                      size="small"
+                    />
+                  </div>
                   <span>영문, 한글, 숫자 2~10자리</span>
                 </div>
 
