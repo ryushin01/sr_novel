@@ -10,25 +10,24 @@ import Button from '@components/Button/Button';
 import axios from 'axios';
 import './LoginModal.scss';
 
-const LoginModal = ({isModalOpen,setIsModalOpen}) => {
+const LoginModal = ({ isModalOpen, setIsModalOpen }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(['rememberUserId'])
+  const [cookies, setCookie, removeCookie] = useCookies(['rememberUserId']);
   const [loginData, handleChangeValue] = useInput({
     id: '',
     password: '',
-  })
+  });
   const compareId = RegExp.ID.test(loginData.id);
   const comparePassword = RegExp.PASSWORD.test(loginData.password);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (cookies.rememberUserId !== undefined) {
-      handleChangeValue({ ...loginData, id: cookies.rememberUserId});
+      handleChangeValue({ ...loginData, id: cookies.rememberUserId });
       setIsChecked(true);
     }
-  }, [])
+  }, []);
 
-  
   const handleCheckedToggle = () => {
     setIsChecked(!isChecked);
   };
@@ -36,39 +35,43 @@ const LoginModal = ({isModalOpen,setIsModalOpen}) => {
   const handleLoginInfo = async () => {
     const params = loginData;
 
-    if(!compareId) {
+    if (!compareId) {
       alert('아이디의 형식이 올바르지 않습니다. 이메일 형식으로 입력해주세요.');
-    } else if(!comparePassword) {
-      alert('비밀번호는 특수문자와 영문자, 숫자를 포함한 8자 이상으로 입력해주세요.');
+    } else if (!comparePassword) {
+      alert(
+        '비밀번호는 특수문자와 영문자, 숫자를 포함한 8자 이상으로 입력해주세요.',
+      );
     }
 
     try {
       const response = await axios.post(`${API.DATA}/LoginData.json`, params);
 
-      if(isChecked) {
+      if (isChecked) {
         removeCookie('rememberUserId');
         setCookie('rememberUserId', loginData.id);
       } else {
         removeCookie('rememberUserId');
       }
 
-      localStorage.setItem('accessToken', response.data.access_token);
-      setIsModalOpen(!isModalOpen);
-      navigate('/');
-      window.location.reload();
+      if (response.status === 200) {
+        localStorage.setItem('accessToken', response.data.access_token);
+        setIsModalOpen(!isModalOpen);
+        navigate('/');
+        window.location.reload();
+      }
     } catch (error) {
-       if(error.response.status === 400) {
+      if (error.response.status === 400) {
         alert('아이디를 확인해주세요.');
-    } else if(error.response.status === 401) {
+      } else if (error.response.status === 401) {
         alert('비밀번호를 확인해주세요.');
+      }
     }
-  }
-}
+  };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = e => {
     e.preventDefault();
     handleLoginInfo();
-  }
+  };
 
   return (
     <form onSubmit={handleLoginSubmit}>
@@ -102,15 +105,28 @@ const LoginModal = ({isModalOpen,setIsModalOpen}) => {
             id="id-save"
             onChange={handleCheckedToggle}
             checked={isChecked}
+            size="small"
           />
         </div>
         <div className="login-modal-btn-wrap">
-          <Button type="submit" content="로그인" color="primary" size="large" onClick={handleLoginSubmit} />
+          <Button
+            type="submit"
+            content="로그인"
+            color="primary"
+            size="large"
+            onClick={handleLoginSubmit}
+          />
         </div>
-        <div className='login-modal-link-wrap'>
-          <button onClick={() => {
-            navigate('/signup')
-            setIsModalOpen(!isModalOpen)}}>회원가입</button>
+        <div className="login-modal-link-wrap">
+          <button
+            type="button"
+            onClick={() => {
+              setIsModalOpen(false);
+              navigate('/signup');
+            }}
+          >
+            회원가입
+          </button>
         </div>
       </fieldset>
     </form>

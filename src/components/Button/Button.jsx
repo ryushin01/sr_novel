@@ -7,7 +7,7 @@ import './Button.scss';
  * @property {string} content                                   - 버튼 내부 텍스트 및 WAI-ARIA 처리
  * @property {boolean} disabled                                 - 버튼 비활성화 여부
  * @property {function} onClick                                 - 버튼 클릭 시 실행 함수
- * @property {string} size: medium / small / large              - [Style] 버튼 크기
+ * @property {string} size: medium / small / large / xSmall              - [Style] 버튼 크기
  * @property {string} color: primary / secondary / grayscale    - [Style] 버튼 색상
  */
 

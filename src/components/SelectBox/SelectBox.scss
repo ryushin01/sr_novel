@@ -6,17 +6,19 @@
   display: flex;
 
   & > .select-box {
-    @include Typography(xs, 400);
+    @include Typography(2xs, 400);
     width: 100%;
     height: 100%;
     padding: 5px 30px 5px 5px;
+    color: $grayscale-2;
     border: 1px solid $grayscale-3;
     border-radius: 4px;
 
     background-image: url('@images/select_down_arrow.png');
     background-repeat: no-repeat;
     background-size: 8px;
-    background-position: 90% 50%;
+    background-position: 95% 50%;
+    background-color: transparent;
 
     font-family: 'Pretendard-Regular', sans-serif;
 
