@@ -27,7 +27,13 @@
     }
   }
 
+  @include MiniTablet {
+    @include Typography(3xs, 400);
+    align-items: flex-end;
+  }
+
   @include Mobile {
+    @include Typography(3xs, 400);
     align-items: flex-end;
   }
 }
@@ -49,105 +55,94 @@
         height: 100%;
         margin: 0 auto;
 
-        & > .sign-up-form-section {
+        & > .sign-up-form {
           width: 100%;
 
           & legend {
             font-size: 0;
           }
 
-          .sign-up-form-title {
-            @include Typography(3xl, 700);
-            padding-bottom: 20px;
-            border-bottom: 1px solid $grayscale-2;
-          }
+          .sign-up-user-info-form-section {
+            width: 100%;
 
-          .sign-up-form-wrap {
-            display: flex;
-            flex-direction: column;
-
-            .container-sign-up {
-              width: auto;
-
-              @include Mobile {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                gap: 10px;
-                padding: 10px 0 0 0;
-              }
+            .sign-up-user-info-form-title {
+              @include Typography(3xl, 700);
+              padding-bottom: 20px;
+              border-bottom: 1px solid $grayscale-2;
             }
 
-            .label-sign-up {
-              width: 110px;
-
-              @include Mobile {
-                width: 90px;
-              }
-            }
-
-            .input-sign-up {
-              width: 335px;
-
-              @include Mobile {
-                width: 100%;
-              }
-            }
-
-            .sign-up-id-wrap {
+            .sign-up-user-info-wrap {
               display: flex;
-              justify-content: flex-start;
-              align-items: center;
-              gap: 5px;
+              flex-direction: column;
 
-              @include Mobile {
-                align-items: flex-end;
+              .container-sign-up {
+                width: auto;
 
-                & > span {
-                  padding-bottom: 10px;
+                @include MiniTablet {
+                  display: flex;
+                  flex-direction: column;
+                  width: 100%;
+                  gap: 10px;
+                  padding: 10px 0 0 0;
                 }
 
-                & > button {
-                  margin-bottom: 5px;
+                @include Mobile {
+                  display: flex;
+                  flex-direction: column;
+                  width: 100%;
+                  gap: 10px;
+                  padding: 10px 0 0 0;
+                }
+              }
+
+              .label-sign-up {
+                width: 110px;
+
+                @include MiniTablet {
+                  width: 90px;
+                }
+
+                @include Mobile {
+                  width: 90px;
                 }
               }
 
               .input-sign-up {
-                width: 120px;
+                width: 335px;
+
+                @include MiniTablet {
+                  width: 100%;
+                }
 
                 @include Mobile {
                   width: 100%;
                 }
               }
-            }
 
-            .select-container {
-              @include Mobile {
-                width: 100%;
-              }
-            }
-
-            .sign-up-password-wrap {
-              @include SignUpText;
-
-              @include Mobile {
-                flex-direction: column;
-                align-items: flex-start;
-              }
-            }
-
-            .sign-up-name-wrap {
-              @include SignUpText;
-              width: 100%;
-
-              .sign-up-name-inner-wrap {
+              .sign-up-id-wrap {
                 display: flex;
+                justify-content: flex-start;
                 align-items: center;
                 gap: 5px;
 
-                @include Mobile {
-                  width: 100%;
+                @include MiniTablet {
                   align-items: flex-end;
+
+                  & > span {
+                    padding-bottom: 10px;
+                  }
+
+                  & > button {
+                    margin-bottom: 5px;
+                  }
+                }
+
+                @include Mobile {
+                  align-items: flex-end;
+
+                  & > span {
+                    padding-bottom: 10px;
+                  }
 
                   & > button {
                     margin-bottom: 5px;
@@ -155,76 +150,203 @@
                 }
 
                 .input-sign-up {
-                  width: 245px;
+                  width: 120px;
+
+                  @include MiniTablet {
+                    width: 100%;
+                  }
 
                   @include Mobile {
                     width: 100%;
                   }
                 }
               }
-              @include Mobile {
-                flex-direction: column;
-                align-items: flex-start;
-              }
-            }
 
-            .sign-up-birth-wrap {
-              @include SignUpText;
-
-              @include Mobile {
-                flex-direction: column;
-                align-items: flex-start;
-              }
-            }
-
-            .sign-up-radio-wrap {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-
-              @include Mobile {
-                flex-direction: column;
-                align-items: flex-start;
-                padding-top: 10px;
-                gap: 5px;
-              }
-
-              .radio-text {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                width: 110px;
+              .select-container {
+                @include MiniTablet {
+                  width: 100%;
+                }
 
                 @include Mobile {
                   width: 100%;
                 }
               }
 
-              .require {
-                position: relative;
+              .sign-up-password-wrap {
+                @include SignUpText;
 
-                &::before {
-                  content: '*';
-                  width: 15px;
-                  height: 15px;
-                  position: absolute;
-                  top: 50%;
-                  left: 25px;
-                  transform: translateY(-50%);
-                  color: $primary-color;
+                @include MiniTablet {
+                  flex-direction: column;
+                  align-items: flex-start;
+                }
+
+                @include Mobile {
+                  flex-direction: column;
+                  align-items: flex-start;
+                }
+              }
+
+              .sign-up-name-wrap {
+                @include SignUpText;
+                width: 100%;
+
+                .sign-up-name-inner-wrap {
+                  display: flex;
+                  align-items: center;
+                  gap: 5px;
+
+                  @include MiniTablet {
+                    width: 100%;
+                    align-items: flex-end;
+
+                    & > button {
+                      margin-bottom: 5px;
+                    }
+                  }
+
+                  @include Mobile {
+                    width: 100%;
+                    align-items: flex-end;
+
+                    & > button {
+                      margin-bottom: 5px;
+                    }
+                  }
+
+                  .input-sign-up {
+                    width: 245px;
+
+                    @include MiniTablet {
+                      width: 100%;
+                    }
+
+                    @include Mobile {
+                      width: 100%;
+                    }
+                  }
+                }
+
+                @include MiniTablet {
+                  flex-direction: column;
+                  align-items: flex-start;
+                }
+
+                @include Mobile {
+                  flex-direction: column;
+                  align-items: flex-start;
+                }
+              }
+
+              .sign-up-birth-wrap {
+                @include SignUpText;
+
+                @include MiniTablet {
+                  flex-direction: column;
+                  align-items: flex-start;
+                }
+
+                @include Mobile {
+                  flex-direction: column;
+                  align-items: flex-start;
+                }
+              }
+
+              .sign-up-radio-wrap {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                @include MiniTablet {
+                  flex-direction: column;
+                  align-items: flex-start;
+                  padding-top: 10px;
+                  gap: 5px;
+                }
+
+                @include Mobile {
+                  flex-direction: column;
+                  align-items: flex-start;
+                  padding-top: 10px;
+                  gap: 5px;
+                }
+
+                .radio-text {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  width: 110px;
+
+                  @include MiniTablet {
+                    width: 100%;
+                  }
+
+                  @include Mobile {
+                    width: 100%;
+                  }
+                }
+
+                .require {
+                  position: relative;
+
+                  &::before {
+                    content: '*';
+                    width: 15px;
+                    height: 15px;
+                    position: absolute;
+                    top: 50%;
+                    left: 25px;
+                    transform: translateY(-50%);
+                    color: $primary-color;
+                  }
+                }
+              }
+
+              .sign-up-event-wrap {
+                @include SignUpText;
+
+                @include MiniTablet {
+                  flex-direction: column;
+                  align-items: flex-start;
+                }
+
+                @include Mobile {
+                  flex-direction: column;
+                  align-items: flex-start;
                 }
               }
             }
+          }
 
-            .sign-up-event-wrap {
-              @include SignUpText;
+          .sign-up-terms-of-use-section {
+            width: 100%;
+            padding-top: 50px;
 
-              @include Mobile {
+            .sign-up-terms-of-use-title {
+              @include Typography(3xl, 700);
+              padding-bottom: 20px;
+              border-bottom: 1px solid $grayscale-2;
+            }
+
+            .sign-up-check-box-wrap {
+              display: flex;
+              width: 100%;
+              padding: 10px;
+
+              .sign-up-check-box-list {
+                display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 10px;
+
+                & > li {
+                  display: flex;
+                  gap: 10px;
+                }
               }
             }
           }
+        }
+        .sign-up-footer-wrap {
+          padding-top: 20px;
         }
       }
     }
