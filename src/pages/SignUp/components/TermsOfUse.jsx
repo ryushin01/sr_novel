@@ -11,7 +11,7 @@ const TermsOfUse = () => {
             <CheckBox label="전체동의(선택약관 포함)" />
           </li>
           <li>
-            <CheckBox label="[필수] 이용약관 동의" size="small" />
+            <CheckBox label="[필수] 이용약관 동의" />
             <Button
               type="button"
               content="전문보기"
