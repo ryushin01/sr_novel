@@ -11,7 +11,7 @@ const Header = () => {
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
-  }
+  };
 
   return (
     <header className="header">
@@ -21,10 +21,18 @@ const Header = () => {
         </h1>
 
         <div className="btn-group">
-          <button type="button" className="btn-signin" onClick={handleModalToggle}>
+          <button
+            type="button"
+            className="btn-signin"
+            onClick={handleModalToggle}
+          >
             로그인
           </button>
-          <button type="button" className="btn-signup" onClick={() => navigate('/signup')}>
+          <button
+            type="button"
+            className="btn-signup"
+            onClick={() => navigate('/signup')}
+          >
             회원가입
           </button>
           <Link to="/search" className="link-search">
@@ -32,15 +40,14 @@ const Header = () => {
           </Link>
         </div>
       </div>
-        {isModalOpen && (
-          <Modal
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-            title="SR NOVEL"
-            content={<LoginModal setIsModalOpen={setIsModalOpen} />}
-          />
-        
-        )}
+      {isModalOpen && (
+        <Modal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          title="SR NOVEL"
+          content={<LoginModal setIsModalOpen={setIsModalOpen} />}
+        />
+      )}
     </header>
   );
 };
