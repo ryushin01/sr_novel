@@ -7,6 +7,12 @@
   border: 1px transparent solid;
   white-space: nowrap;
 
+  &.xSmall {
+    @include Typography(4xs);
+    padding: 2px 2px;
+    border-radius: 20px;
+  }
+
   &.small {
     padding: 7px 15px;
     border-radius: 20px;
