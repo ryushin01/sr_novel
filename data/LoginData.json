@@ -1,0 +1,10 @@
+{
+    "message" : "SUCCESS",
+    "access_token" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU5NzIwNzYwNn0.5",
+    "result" : [
+        {
+            "id" : 1,
+            "name" : "Yojin park"
+        }
+    ]
+}   
