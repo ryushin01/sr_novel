@@ -1,6 +1,6 @@
 @charset "urf-8";
-@import '@scss/partials/viewer_theme.scss', '@scss/partials/media_query.scss',
-  '@scss/partials/typography.scss';
+@import '@scss/partials/viewer_theme.scss', '@scss/partials/theme.scss',
+  '@scss/partials/media_query.scss', '@scss/partials/typography.scss';
 
 .viewer-content {
   padding: 50px 80px;
@@ -47,14 +47,25 @@
     color: $font-white-color;
   }
 
+  h3,
   p {
     @include Typography(2xl);
     white-space: pre-line;
+  }
+
+  .author-comment {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px $grayscale-4 solid;
+
+    p {
+      margin-top: inherit;
+    }
   }
 }
 
 @include Mobile {
   .viewer-content {
-    padding: 12px 20px;
+    padding: 30px 20px;
   }
 }
