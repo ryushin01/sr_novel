@@ -1,0 +1,25 @@
+@charset "urf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/theme.scss', '@scss/partials/typography.scss';
+
+.recommend-keywords-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+
+  h3 {
+    @include Typography(xl);
+  }
+
+  .recommend-keywords-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+}
+
+@include Mobile {
+}

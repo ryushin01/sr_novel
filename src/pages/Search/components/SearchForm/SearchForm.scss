@@ -1,0 +1,70 @@
+@charset "urf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/theme.scss', '@scss/partials/typography.scss';
+
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .search-form {
+      position: relative;
+
+      legend {
+        @include a11yHidden();
+      }
+
+      label {
+        display: flex;
+
+        input {
+          @include Typography(xl);
+          width: 100%;
+          padding: 15px 85px 16px 10px;
+          border: none;
+          border-bottom: 2px $primary-color solid;
+          outline: 0;
+          background-color: transparent;
+        }
+
+        input::-webkit-search-decoration,
+        input::-webkit-search-cancel-button,
+        input::-webkit-search-results-button,
+        input::-webkit-search-results-decoration {
+          display: none;
+        }
+      }
+
+      .btn-group {
+        @include Position(absolute, $top: 50%, $right: 0);
+        transform: translateY(-50%);
+
+        button {
+          @include Ir();
+          width: 40px;
+          height: 40px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 30px;
+        }
+
+        button[type='reset'] {
+          background-image: url(@svg/search/icon_reset_#{$theme}.svg);
+        }
+
+        button[type='submit'] {
+          background-image: url(@svg/search/icon_search.svg);
+        }
+      }
+    }
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
+}
