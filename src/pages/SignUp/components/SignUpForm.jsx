@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useInput } from '@customHooks/useInput';
 import { RegExp } from '@/RegExp';
+import TermsOfUseForm from './TermsOfUseForm';
 import UserInfo from './UserInfo';
-import TermsOfUse from './TermsOfUse';
 import FooterBtn from './FooterBtn';
 
 const SignUpForm = () => {
@@ -20,6 +20,17 @@ const SignUpForm = () => {
     gender: '',
   });
 
+  const [selectedOptions, setSelectedOptions] = useState({
+    all: false,
+    termsOfUse: false,
+    collection: false,
+    consignment: false,
+    advertising: false,
+    night: false,
+  });
+
+  console.log(selectedOptions);
+
   const combineSignUpData = {
     ...signUpInputData,
     ...signUpData,
@@ -32,8 +43,6 @@ const SignUpForm = () => {
   // const compareName = RegExp.NAME.test(signUpInputData.nickname);
   // const compareBirth = RegExp.birth.test(signUpInputData.birth);
 
-  console.log(combineSignUpData);
-
   return (
     <form className="sign-up-form">
       <fieldset>
@@ -42,7 +51,10 @@ const SignUpForm = () => {
           setSignUpInputData={setSignUpInputData}
           setSignUpData={setSignUpData}
         />
-        <TermsOfUse />
+        <TermsOfUseForm
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
+        />
         <FooterBtn />
       </fieldset>
     </form>
