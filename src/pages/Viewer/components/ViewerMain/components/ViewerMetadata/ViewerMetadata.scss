@@ -1,22 +1,90 @@
-@charset "urf-8";
-@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
-@import '@scss/partials/grid_system.scss', '@scss/partials/media_query.scss';
-@import '@scss/partials/Typography.scss';
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/theme.scss', '@scss/partials/typography.scss';
 
-@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
-  .#{$theme} {
-    display: block;
+.viewer-metadata {
+  @include FlexCenter();
+  flex-direction: column;
+  gap: 40px;
+  padding: 80px 0 160px;
+
+  h1 {
+    @include Typography(2xl);
+    color: $primary-color;
+    font-weight: 700;
+  }
+
+  h2 {
+    margin-top: 20px;
+    font-size: 36px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .metadata-list {
+    display: flex;
+    gap: 15px;
+
+    li {
+      @include FlexCenter();
+      flex-direction: column;
+      gap: 5px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1px $grayscale-3 solid;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 28px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      &:first-child {
+        &::before {
+          background-image: url(/images/rating.png);
+        }
+      }
+
+      &:last-child {
+        &::before {
+          background-image: url(/images/comments.png);
+        }
+      }
+    }
+  }
+
+  a {
+    @include Typography(lg, 700);
+    display: inline-block;
+    min-width: 170px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: $primary-color;
+    line-height: 48px;
+
+    color: $grayscale-4;
+    text-align: center;
   }
 }
 
-@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
-  $grayscale-4 in $pallette
-{
-  @include theme(
-    $theme,
-    $grayscale-1,
-    $grayscale-2,
-    $grayscale-3,
-    $grayscale-4
-  );
+@include Mobile {
+  .viewer-metadata {
+    padding: 120px 20px 40px;
+
+    h1 {
+      font-size: initial;
+    }
+
+    h2 {
+      @include Typography(3xl);
+    }
+
+    a {
+      width: 100%;
+    }
+  }
 }

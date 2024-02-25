@@ -16,7 +16,7 @@ const Router = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/list/:queryType" element={<List />} />
         <Route path="/detail/:isbn13" element={<BookDetail />} />
-        <Route path="/viewer/:chapterNumber" element={<Viewer />} />
+        <Route path="/viewer/:type" element={<Viewer />} />
 
         {/* 404 */}
         {/* <Route path="*" element={<Error />} /> */}

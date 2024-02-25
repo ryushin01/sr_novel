@@ -3,9 +3,9 @@ import BackButton from '@components/BackButton/BackButton';
 import ViewerModeSwitcher from '@pages/Viewer/components/ViewerHeader/components/ViewerModeSwitcher/ViewerModeSwitcher';
 import './ViewerHeader.scss';
 
-const ViewerHeader = ({ title, selectFondMode, selectThemeMode, fontMode }) => {
+const ViewerHeader = ({ selectFondMode, selectThemeMode, fontMode, title }) => {
   const [isOpenViewerModeSwitcher, setIsOpenViewerModeSwitcher] =
-    useState(true);
+    useState(false);
 
   const toggleViewerModeSwitcherLayer = () => {
     setIsOpenViewerModeSwitcher(!isOpenViewerModeSwitcher);
@@ -17,8 +17,8 @@ const ViewerHeader = ({ title, selectFondMode, selectThemeMode, fontMode }) => {
         <BackButton />
 
         <h2>
-          {title ||
-            '작품명이 길어지면 말줄임 처리가 됩니다. 작품명이 길어지면 말줄임 처리가 됩니다. 작품명이 길어지면 말줄임 처리가 됩니다.'}
+          {title}
+          <span>&nbsp;-&nbsp;1화</span>
         </h2>
 
         <div className="viewer-mode-switcher-wrap">
