@@ -9,7 +9,13 @@
  * }
  */
 
-@mixin GridSystem($desktop: 1, $tablet: 1, $mobile: 1, $default: 1fr) {
+@mixin GridSystem(
+  $desktop: 1,
+  $tablet: 1,
+  $miniTablet,
+  $mobile: 1,
+  $default: 1fr
+) {
   display: grid;
   column-gap: 4%;
   height: 100%;
@@ -24,8 +30,13 @@
     grid-template-columns: repeat($tablet, $default);
   }
 
+  // MiniTablet
+  @media all and (min-width: 430px) and (max-width: 768px) {
+    grid-template-columns: repeat($miniTablet, $default);
+  }
+
   // Mobile
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (min-width: 320px) and (max-width: 430px) {
     grid-template-columns: repeat($mobile, $default);
   }
 }
