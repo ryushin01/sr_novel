@@ -7,11 +7,13 @@ import Footer from './components/Footer/Footer';
 import Viewer from './pages/Viewer/Viewer';
 import List from './pages/List/List';
 import Search from './pages/Search/Search';
+import ScrollTop from './components/ScrollTop/ScrollTop';
 
 const Router = () => {
   return (
     <BrowserRouter basename="/sr_novel">
       <Header />
+      <ScrollTop />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/signup" element={<SignUp />} />
