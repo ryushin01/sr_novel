@@ -1,0 +1,31 @@
+@charset "urf-8";
+@import '@scss/partials/media_query.scss', '@scss/partials/mixin.scss',
+  '@scss/partials/theme.scss', '@scss/partials/typography.scss';
+
+@mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
+  .#{$theme} {
+    .search {
+      flex: 1;
+      background-color: $grayscale-4;
+      color: $grayscale-1;
+
+      .inner-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+    }
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3,
+  $grayscale-4 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4
+  );
+}

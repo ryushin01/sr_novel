@@ -16,7 +16,6 @@ export const LIST_SELECT_DATA = [
   },
 ];
 
-
 export const EMAIL_SELECT_DATA = [
   {
     id: 1,
@@ -47,15 +46,30 @@ export const EMAIL_SELECT_DATA = [
 
 export const RADIO_DATA = [
   {
-    id : 1,
-    name : "gender",
-    value : "남",
-    checked : true,
-  }, 
+    id: 1,
+    name: 'gender',
+    value: '남',
+    checked: true,
+  },
   {
-    id : 2,
-    name : "gender",
-    value : "여",
-    checked : false,
-  }
-]
+    id: 2,
+    name: 'gender',
+    value: '여',
+    checked: false,
+  },
+];
+
+export const RECOMMEND_KEYWORDS_DATA = [
+  {
+    query: '사랑(제목 + 저자 검색)',
+    queryType: 'Keyword',
+  },
+  {
+    query: '사랑(제목 검색)',
+    queryType: 'Title',
+  },
+  {
+    query: '사랑(저자 검색)',
+    queryType: 'Author',
+  },
+];

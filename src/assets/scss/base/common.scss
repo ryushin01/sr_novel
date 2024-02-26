@@ -63,6 +63,14 @@ input {
   font-family: 'NanumSquare', sans-serif;
 }
 
+#root {
+  & > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+}
+
 @mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   [data-theme='#{$theme}'] {
     background-color: $grayscale-4;
