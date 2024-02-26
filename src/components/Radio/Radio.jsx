@@ -15,7 +15,7 @@ const Radio = ({ name, id, value, checked, onChange, disabled }) => {
           type="radio"
           id={id}
           name={name}
-          aria-label={value}
+          value={value}
           checked={checked}
           onChange={onChange}
           disabled={disabled}
