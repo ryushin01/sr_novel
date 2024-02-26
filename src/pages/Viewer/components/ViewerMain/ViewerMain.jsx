@@ -2,11 +2,16 @@ import ViewerContent from '@pages/Viewer/components/ViewerMain/components/Viewer
 import ViewerMetadata from '@pages/Viewer/components/ViewerMain/components/ViewerMetadata/ViewerMetadata';
 import './ViewerMain.scss';
 
-const ViewerMain = ({ fontMode, themeMode }) => {
+const ViewerMain = ({ fontMode, themeMode, title, summary, authorComment }) => {
   return (
     <section className="viewer-main">
-      <ViewerContent fontMode={fontMode} themeMode={themeMode} />
-      <ViewerMetadata />
+      <ViewerContent
+        fontMode={fontMode}
+        themeMode={themeMode}
+        summary={summary}
+        authorComment={authorComment}
+      />
+      <ViewerMetadata title={title} />
     </section>
   );
 };

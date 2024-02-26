@@ -19,7 +19,6 @@ const Router = () => {
         <Route path="/detail/:isbn13" element={<BookDetail />} />
         <Route path="/viewer/:chapterNumber" element={<Viewer />} />
         <Route path="/search" element={<Search />} />
-
         {/* 404 */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
