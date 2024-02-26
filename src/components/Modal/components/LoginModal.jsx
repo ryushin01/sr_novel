@@ -32,7 +32,7 @@ const LoginModal = ({ isModalOpen, setIsModalOpen }) => {
     setIsChecked(!isChecked);
   };
 
-  const handleLoginInfo = async () => {
+  const postLoginInfo = async () => {
     const params = loginData;
 
     if (!compareId) {
@@ -41,36 +41,36 @@ const LoginModal = ({ isModalOpen, setIsModalOpen }) => {
       alert(
         '비밀번호는 특수문자와 영문자, 숫자를 포함한 8자 이상으로 입력해주세요.',
       );
-    }
+    } else {
+      try {
+        const response = await axios.post(`${API.DATA}/LoginData.json`, params);
 
-    try {
-      const response = await axios.post(`${API.DATA}/LoginData.json`, params);
+        if (isChecked) {
+          removeCookie('rememberUserId');
+          setCookie('rememberUserId', loginData.id);
+        } else {
+          removeCookie('rememberUserId');
+        }
 
-      if (isChecked) {
-        removeCookie('rememberUserId');
-        setCookie('rememberUserId', loginData.id);
-      } else {
-        removeCookie('rememberUserId');
-      }
-
-      if (response.status === 200) {
-        localStorage.setItem('accessToken', response.data.access_token);
-        setIsModalOpen(!isModalOpen);
-        navigate('/');
-        window.location.reload();
-      }
-    } catch (error) {
-      if (error.response.status === 400) {
-        alert('아이디를 확인해주세요.');
-      } else if (error.response.status === 401) {
-        alert('비밀번호를 확인해주세요.');
+        if (response.status === 200) {
+          localStorage.setItem('accessToken', response.data.access_token);
+          setIsModalOpen(!isModalOpen);
+          navigate('/');
+          window.location.reload();
+        }
+      } catch (error) {
+        if (error.response.status === 400) {
+          alert('아이디를 확인해주세요.');
+        } else if (error.response.status === 401) {
+          alert('비밀번호를 확인해주세요.');
+        }
       }
     }
   };
 
   const handleLoginSubmit = e => {
     e.preventDefault();
-    handleLoginInfo();
+    postLoginInfo();
   };
 
   return (
