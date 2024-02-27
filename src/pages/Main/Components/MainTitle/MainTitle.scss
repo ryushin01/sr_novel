@@ -11,8 +11,13 @@
       width: 100%;
       padding: 30px 20px 10px 20px;
 
+      @include MiniTablet {
+        @include Typography(lg, 700);
+        padding: 30px 20px 10px 20px;
+      }
+
       @include Tablet {
-        @include Typography(sm, 700);
+        @include Typography(xs, 700);
         padding: 30px 20px 20px 20px;
       }
 

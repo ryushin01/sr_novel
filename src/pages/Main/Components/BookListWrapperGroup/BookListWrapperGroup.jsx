@@ -34,7 +34,7 @@ const BookListWrapperGroup = ({
         <>
           <BookListSection
             link="/list/ItemNewSpecial?title=[NEW] 주목할만한 신간 리스트"
-            title="[NEW] 주목할만한 신간 리스트"
+            title="[NEW] 따끈따끈 신간 리스트"
             bookData={specialBooksData}
           />
           <BookListSection
@@ -44,7 +44,7 @@ const BookListWrapperGroup = ({
           />
           <BookListSection
             link="#"
-            title="[BEST] 파워 블로거들의 선택!"
+            title="[BEST] 파워블로거들의 선택!"
             bookData={blogBooksData}
           />
         </>
