@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import BookEval from '@components/BookEval/BookEval';
 
 const ListContentsTitle = ({ bookData, direction, rank }) => {
   const { isbn13, title, author, pubDate, bestRank } = bookData;
@@ -13,6 +14,8 @@ const ListContentsTitle = ({ bookData, direction, rank }) => {
       </h3>
       <h4>{authorSplit}</h4>
       {!direction && !rank && <span>출판일 : {pubDate}</span>}
+
+      <BookEval isbn13={isbn13} />
     </div>
   );
 };

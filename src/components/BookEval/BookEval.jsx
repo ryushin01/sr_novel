@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { API } from '@/config';
 import './BookEval.scss';
 
 const BookEval = ({ isbn13 }) => {
@@ -12,7 +12,7 @@ const BookEval = ({ isbn13 }) => {
 
   const getDetailData = async () => {
     try {
-      const response = await axios.get('../data/DetailData.json');
+      const response = await axios.get(API.DETAIL_DATA);
 
       if (isbn13 % 3 === 0) {
         setBookDetailData(

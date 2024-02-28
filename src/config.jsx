@@ -9,7 +9,7 @@ const BASE_URL =
 // const BASE_URL = '/sr_novel/data/';
 
 export const API = {
-  DATA: `/sr_novel/data`,
+  DETAIL_DATA: `/sr_novel/data/DetailData.json`,
 };
 
 export const customAxios = axios.create({
