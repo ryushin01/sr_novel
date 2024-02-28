@@ -6,6 +6,7 @@
   .#{$theme} {
     .search-form {
       position: relative;
+      margin-bottom: 40px;
 
       legend {
         @include a11yHidden();

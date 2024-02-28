@@ -21,7 +21,8 @@ export default defineConfig({
       { find: '@data', replacement: '/src/assets/data' },
       { find: '@scss', replacement: '/src/assets/scss' },
       { find: '@images', replacement: '/public/images' },
-      { find: '@customHooks', replacement: '/src/customHooks'}
+      { find: '@customHooks', replacement: '/src/customHooks' },
+      { find: '@lottie', replacement: '/src/lottie' },
     ],
   },
 });

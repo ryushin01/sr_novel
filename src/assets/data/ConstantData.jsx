@@ -73,3 +73,22 @@ export const RECOMMEND_KEYWORDS_DATA = [
     queryType: 'Author',
   },
 ];
+
+export const SEARCH_RESULT_TAB_DATA = [
+  {
+    name: '전체',
+    CategoryId: 1,
+  },
+  {
+    name: '로맨스 소설',
+    CategoryId: 51125,
+  },
+  {
+    name: '판타지 소설',
+    CategoryId: 51122,
+  },
+  {
+    name: '라이트 노벨',
+    CategoryId: 50927,
+  },
+];
