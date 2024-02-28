@@ -32,11 +32,20 @@ const BookEval = ({ isbn13 }) => {
     }
   };
   return bookDetailData.map(el => {
+    // Intl 객체를 이용하여 만 이상의 숫자를 2만과 같이 표현
+    const compactNumberFormatter = new Intl.NumberFormat('ko', {
+      notation: 'compact',
+    });
+
+    const compactNumber = num => {
+      return compactNumberFormatter.format(num);
+    };
+
     return (
       <div key={el.views} className="list-item-eval-wrap">
         <ul>
-          <li>{el.views.toLocaleString()}</li>
-          <li>{el.interests.toLocaleString()}</li>
+          <li>{compactNumber(el.views)}</li>
+          <li>{compactNumber(el.interests)}</li>
           <li>{el.totalRating}</li>
         </ul>
       </div>
