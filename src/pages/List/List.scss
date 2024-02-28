@@ -107,6 +107,8 @@
 
           & > .list-items-title {
             display: flex;
+            justify-content: center;
+            align-items: flex-start;
             flex-direction: column;
             width: 100%;
 
@@ -115,15 +117,13 @@
               @include Typography(sm, 700);
               width: 100%;
               color: $grayscale-1;
-              text-align: center;
             }
 
             & > span {
               @include Ellipsis(true, 1);
               @include Typography(xs, 400);
               color: $grayscale-2;
-              text-align: center;
-              margin-bottom: 10px;
+              margin-bottom: 3px;
             }
 
             @include MiniTablet {
@@ -148,7 +148,7 @@
 
               & > span {
                 @include Typography(2xs, 400);
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
             }
           }
