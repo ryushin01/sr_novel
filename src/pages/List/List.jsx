@@ -4,10 +4,10 @@ import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { LIST_SELECT_DATA } from '@data/ConstantData';
 import SelectBox from '@components/SelectBox/SelectBox';
 import Pagination from '@components/Pagination/Pagination';
+import BookEval from '@components/BookEval/BookEval';
 import Loading from '../Loading/Loading';
 
 import { customAxios } from '@/config';
-import axios from 'axios';
 
 import './List.scss';
 
@@ -18,7 +18,6 @@ const List = () => {
   const [totalPage, setTotalPage] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
-  const [bookDetailData, setBookDetailData] = useState([]);
 
   const params = useParams();
   const queryType = params.queryType;
@@ -32,7 +31,6 @@ const List = () => {
 
   useEffect(() => {
     getListData();
-    getDetailData();
   }, [selectValue, currentPage]);
 
   const getListData = async () => {
@@ -42,28 +40,6 @@ const List = () => {
       setTotalPage(Math.ceil(response?.data.item.length / pageSize));
 
       setLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getDetailData = async () => {
-    try {
-      const response = await axios.get('../data/DetailData.json');
-
-      if (listData.isbn13 % 3 === 0) {
-        setBookDetailData(
-          response?.data?.result.filter(data => data.type === 'A'),
-        );
-      } else if (listData.isbn13 % 3 === 1) {
-        setBookDetailData(
-          response?.data?.result.filter(data => data.type === 'B'),
-        );
-      } else {
-        setBookDetailData(
-          response?.data?.result.filter(data => data.type === 'C'),
-        );
-      }
     } catch (error) {
       console.error(error);
     }
@@ -83,6 +59,7 @@ const List = () => {
         </h2>
         <section className="list-section-wrap">
           {listData?.slice(startIndex, endIndex).map(data => {
+            const authorSplit = data.author.split('(지은이)');
             return (
               <div className="list-items-wrap" key={data.title}>
                 <div className="list-items-img">
@@ -92,18 +69,8 @@ const List = () => {
                 </div>
                 <h3 className="list-items-title">
                   <Link to={`/detail/${data.isbn13}`}>{data.title}</Link>
-                  <span>{data.author}</span>
-                  {bookDetailData.map(el => {
-                    return (
-                      <div key={el.views} className="list-item-eval-wrap">
-                        <ul>
-                          <li>{el.views}</li>
-                          <li>{el.interests}</li>
-                          <li>{el.totalRating}</li>
-                        </ul>
-                      </div>
-                    );
-                  })}
+                  <span>{authorSplit}</span>
+                  <BookEval isbn13={data.isbn13} />
                 </h3>
               </div>
             );
