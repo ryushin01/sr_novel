@@ -4,22 +4,23 @@
 
 @mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   .#{$theme} {
-    .search {
-      flex: 1;
-      padding: 40px 0;
-      background-color: $grayscale-4;
-      color: $grayscale-1;
+    .tabs {
+      @include FlexCenter();
+      flex-direction: row;
 
-      .outer-wrap {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 10px;
-      }
+      .tab {
+        @include Typography(xs);
+        flex: 1;
+        height: 48px;
+        border: 1px $grayscale-3 solid;
+        color: $grayscale-2;
+        line-height: 46px;
 
-      .inner-wrap {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 0 20px;
+        &.selected {
+          border-color: $primary-color;
+          background-color: $primary-color;
+          color: $grayscale-4;
+        }
       }
     }
   }

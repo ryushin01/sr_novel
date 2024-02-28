@@ -4,22 +4,15 @@
 
 @mixin theme($theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4) {
   .#{$theme} {
-    .search {
-      flex: 1;
-      padding: 40px 0;
-      background-color: $grayscale-4;
-      color: $grayscale-1;
+    .search-result-section {
+      h2 {
+        @include Typography(2xl);
+        margin-bottom: 50px;
+        text-align: center;
 
-      .outer-wrap {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 10px;
-      }
-
-      .inner-wrap {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 0 20px;
+        span {
+          color: $primary-color;
+        }
       }
     }
   }
