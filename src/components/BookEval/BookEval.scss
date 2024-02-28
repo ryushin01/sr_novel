@@ -20,9 +20,15 @@
           justify-content: flex-start;
         }
 
+        @include Mobile {
+          justify-content: flex-start;
+        }
+
         li {
+          @include FlexCenter;
+          @include Typography(2xs);
+
           &:first-child {
-            display: flex;
             margin-right: 10px;
 
             &::before {
