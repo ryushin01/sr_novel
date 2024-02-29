@@ -33,20 +33,46 @@ const Main = () => {
     getAladdinBooksData();
   }, []);
 
+  /**
+   * 페이지 로드 시마다 API를 가져오게 되면 매 페이지 랜더링 마다 Data를 호출하여 계속 로딩이 발생하므로
+   * 세션스토리지에 저장된 데이터가 있으면 가져오고 없으면 API를 호출하여 데이터를 가져오도록 수정
+   */
+
   const getAladdinBooksData = async () => {
     try {
-      const response = await axios.all(
-        API_ENDPOINTS.map(endpoint => customAxios.get(endpoint)),
-      );
+      // 캐시된 데이터가 있는 지 확인
+      const cachedData = sessionStorage.getItem('BooksData');
 
-      setBsBooksData(response[0]?.data?.item);
-      setNewBooksData(response[1]?.data?.item);
-      setSpecialBooksData(response[2]?.data?.item);
-      setEditorBooksData(response[3]?.data?.item);
-      setBlogBooksData(response[4]?.data?.item);
-      setRankBooksData(response[5]?.data?.item);
+      if (cachedData) {
+        // 캐싱된 데이터 JSON.parse를 이용하여 파싱
+        const parsedData = JSON.parse(cachedData);
 
-      setLoading(false);
+        setBsBooksData(parsedData[0]?.data?.item);
+        setNewBooksData(parsedData[1]?.data?.item);
+        setSpecialBooksData(parsedData[2]?.data?.item);
+        setEditorBooksData(parsedData[3]?.data?.item);
+        setBlogBooksData(parsedData[4]?.data?.item);
+        setRankBooksData(parsedData[5]?.data?.item);
+
+        setLoading(false);
+      } else {
+        // 캐시된 데이터가 없다면 서버에서 데이터 요청
+        const response = await axios.all(
+          API_ENDPOINTS.map(endpoint => customAxios.get(endpoint)),
+        );
+
+        // 데이터를 세션스토리지에 저장
+        sessionStorage.setItem('BooksData', JSON.stringify(response));
+
+        setBsBooksData(response[0]?.data?.item);
+        setNewBooksData(response[1]?.data?.item);
+        setSpecialBooksData(response[2]?.data?.item);
+        setEditorBooksData(response[3]?.data?.item);
+        setBlogBooksData(response[4]?.data?.item);
+        setRankBooksData(response[5]?.data?.item);
+
+        setLoading(false);
+      }
     } catch (error) {
       console.error(error);
     }
