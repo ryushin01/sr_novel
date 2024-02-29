@@ -1,10 +1,10 @@
 import FilterButton from '../../FilterButton/FilterButton';
 
-const EpisodeListTitle = ({ title }) => {
+const EpisodeListTitle = ({ title, episodeSort, setEpisodeSort }) => {
   return (
     <h3 className="book-detail-episode-list-title">
       {title}
-      <FilterButton />
+      <FilterButton episodeSort={episodeSort} setEpisodeSort={setEpisodeSort} />
     </h3>
   );
 };

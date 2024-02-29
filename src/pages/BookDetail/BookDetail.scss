@@ -364,40 +364,6 @@
 
           & > .book-detail-filter-btn-wrap {
             display: flex;
-
-            & > .book-detail-filter-btn-1 {
-              @include Typography(2xs, 400);
-              margin-right: 10px;
-              position: relative;
-              color: $grayscale-1;
-              cursor: pointer;
-
-              &::before {
-                content: '';
-                width: 1px;
-                height: 10px;
-                position: absolute;
-                top: 50%;
-                right: -5px;
-                transform: translateY(-50%);
-                background-color: $grayscale-3;
-              }
-
-              &.active {
-                @include Typography(xs, 700);
-                color: $primary-color;
-              }
-            }
-            & > .book-detail-filter-btn-2 {
-              @include Typography(2xs, 400);
-              color: $grayscale-1;
-              cursor: pointer;
-
-              &.active {
-                @include Typography(xs, 700);
-                color: $primary-color;
-              }
-            }
           }
         }
 

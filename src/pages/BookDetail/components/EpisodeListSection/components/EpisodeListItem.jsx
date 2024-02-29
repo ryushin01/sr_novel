@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const EpisodeListItem = ({ episodeData }) => {
+const EpisodeListItem = ({ episodeData, episodeSort }) => {
   return episodeData?.map(data => {
+    episodeSort === 'last'
+      ? data.chapterList.sort((a, b) => b.chapterNumber - a.chapterNumber)
+      : data.chapterList.sort((a, b) => a.chapterNumber - b.chapterNumber);
     return data.chapterList.map(episode => {
       return (
         <li
