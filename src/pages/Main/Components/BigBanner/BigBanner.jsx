@@ -36,6 +36,7 @@ const BigBanner = () => {
         loop={true} // 무한 반복 여부
         centeredSlides={true} // 슬라이드 중앙 정렬
         slidesPerView={'auto'}
+        allowTouchMove={false}
         // slidesPerView={'1'} // 한 화면에 보여줄 슬라이드 개수
         speed={500} // 슬라이드 속도
         // spaceBetween={10} // 슬라이드 사이 여백
@@ -62,11 +63,14 @@ const BigBanner = () => {
             </SwiperSlide>
           );
         })}
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
+
+        <div className="autoplay-progress-wrap">
+          <div className="autoplay-progress" slot="container-end">
+            <svg viewBox="0 0 48 48" ref={progressCircle}>
+              <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span ref={progressContent}></span>
+          </div>
         </div>
       </Swiper>
     </section>
