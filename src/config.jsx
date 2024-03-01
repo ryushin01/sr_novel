@@ -10,6 +10,7 @@ const BASE_URL =
 
 export const API = {
   DETAIL_DATA: `/sr_novel/data/DetailData.json`,
+  BIG_BANNER_DATA: `/sr_novel/data/BigBannerData.json`,
 };
 
 export const customAxios = axios.create({
