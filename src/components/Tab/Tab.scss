@@ -10,6 +10,7 @@
 
       .tab {
         @include Typography(xs);
+        position: relative;
         flex: 1;
         height: 48px;
         border: 1px $grayscale-3 solid;
@@ -20,6 +21,38 @@
           border-color: $primary-color;
           background-color: $primary-color;
           color: $grayscale-4;
+        }
+      }
+    }
+
+    @include Mobile() {
+      .tabs {
+        .tab {
+          @include Typography(2xs);
+          height: 44px;
+          border: 0 none;
+          border-bottom: 2px $grayscale-3 solid;
+          line-height: 42px;
+
+          &.selected {
+            border-color: $primary-color;
+            background-color: transparent;
+            color: $primary-color;
+          }
+
+          &::after {
+            @include Position(absolute, $top: 8px, $right: 8px);
+            content: '';
+            display: block;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: $primary-color;
+          }
+
+          .total-results {
+            display: none;
+          }
         }
       }
     }

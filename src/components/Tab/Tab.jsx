@@ -1,33 +1,33 @@
 import { useEffect, useState } from 'react';
-import { customAxios } from '@/config';
+// import BookListItem from '@components/BookListItem/BookListItem';
+// import BookList from '@pages/Main/Components/BookListSection/components/BookList/BookList';
+
+import BookList from '@components/BookList/BookList';
+
 import './Tab.scss';
 
-const Tab = ({ query, data }) => {
+const Tab = ({ tabData, panelData }) => {
   const [currentTab, setCurrentTab] = useState(0);
-  // const API_KEY = import.meta.env.VITE_ALADDIN_API_KEY;
-  // const API_URL = `ttb/api/ItemSearch.aspx?ttbkey=${API_KEY}&Query=${query}&QueryType=Title&MaxResults=10&start=1&SearchTarget=Book&output=xml&Version=20131101`;
+  const [currentTabData, setCurrentTabData] = useState([]);
+
+  let totalResultsArr = panelData
+    .flat(Infinity)
+    .map(el => el.data.totalResults);
 
   const selectTab = index => {
     setCurrentTab(index);
+    setCurrentTabData(panelData[index].data.item);
   };
 
-  // const getCategoryList = async () => {
-  //   try {
-  //     const response = await customAxios.get(API_URL);
-  //     // setBookItemInfo(response?.data?.item);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-
-  // }, []);
+  useEffect(() => {
+    selectTab(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
       <div className="tabs" role="tablist">
-        {data.map((el, index) => (
+        {tabData.map((el, index) => (
           <button
             key={index}
             type="button"
@@ -35,11 +35,14 @@ const Tab = ({ query, data }) => {
             className={index === currentTab ? 'tab selected' : 'tab'}
             onClick={() => selectTab(index)}
           >
-            {el.name}
+            {el.name}{' '}
+            <span className="total-results">({totalResultsArr[index]})</span>
           </button>
         ))}
       </div>
-      <div className="tab-panel">{data[currentTab].content}</div>
+      <div className="tab-panel">
+        <BookList bookData={currentTabData} />
+      </div>
     </div>
   );
 };

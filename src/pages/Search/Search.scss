@@ -22,6 +22,20 @@
         padding: 0 20px;
       }
     }
+
+    @include Mobile() {
+      .search {
+        padding: 0;
+
+        .outer-wrap {
+          padding: 0 20px;
+        }
+
+        .inner-wrap {
+          padding: 0;
+        }
+      }
+    }
   }
 }
 

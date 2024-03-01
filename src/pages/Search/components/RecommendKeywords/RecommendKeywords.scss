@@ -22,4 +22,17 @@
 }
 
 @include Mobile {
+  .recommend-keywords-section {
+    padding: 15px 0;
+    text-align: left;
+
+    h3 {
+      @include Typography(2xs);
+    }
+
+    .recommend-keywords-list {
+      justify-content: start;
+      margin-top: 10px;
+    }
+  }
 }
