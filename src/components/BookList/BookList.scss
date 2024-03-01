@@ -65,6 +65,12 @@
           }
         }
       }
+
+      .no-data {
+        @include FlexCenter();
+        @include Typography(3xl);
+        padding: 150px 0;
+      }
     }
 
     @include Mobile() {
@@ -89,6 +95,11 @@
               }
             }
           }
+        }
+
+        .no-data {
+          @include Typography(xs);
+          padding: 150px 0;
         }
       }
     }

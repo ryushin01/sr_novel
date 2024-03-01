@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
-// import BookListItem from '@components/BookListItem/BookListItem';
-// import BookList from '@pages/Main/Components/BookListSection/components/BookList/BookList';
-
 import BookList from '@components/BookList/BookList';
-
 import './Tab.scss';
 
 const Tab = ({ tabData, panelData }) => {
@@ -22,7 +18,7 @@ const Tab = ({ tabData, panelData }) => {
   useEffect(() => {
     selectTab(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [panelData]);
 
   return (
     <div>

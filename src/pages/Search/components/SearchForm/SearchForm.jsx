@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { customAxios } from '@/config';
 import { useInput } from '@customHooks/useInput';
@@ -38,8 +38,7 @@ const SearchForm = ({
     return `ttb/api/ItemSearch.aspx?ttbkey=${API_KEY}&Query=${searchKeywordData.query}&QueryType=Keyword&CategoryId=${categoryId}&MaxResults=100&start=1&SearchTarget=Book&output=js&Version=20131101`;
   };
 
-  const getCategoryList = async e => {
-    e.preventDefault();
+  const getCategoryList = async () => {
     setLoading(true);
 
     try {
@@ -58,12 +57,17 @@ const SearchForm = ({
     }
   };
 
+  const submitSearchKeyword = e => {
+    e.preventDefault();
+    getCategoryList();
+  };
+
   return (
     <>
       <form
         className="search-form"
         onChange={setSearchKeywordData}
-        onSubmit={getCategoryList}
+        onSubmit={submitSearchKeyword}
       >
         <fieldset>
           <legend>검색 폼</legend>
