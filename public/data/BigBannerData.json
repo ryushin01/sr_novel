@@ -1,0 +1,25 @@
+{
+  "message": "SUCCESS",
+  "result": [
+    {
+      "src": "/sr_novel/images/main/big_banner/big_banner_1.jpg",
+      "alt": "첫 번째 빅배너"
+    },
+    {
+      "src": "/sr_novel/images/main/big_banner/big_banner_2.jpg",
+      "alt": "두 번째 빅배너"
+    },
+    {
+      "src": "/sr_novel/images/main/big_banner/big_banner_3.jpg",
+      "alt": "세 번째 빅배너"
+    },
+    {
+      "src": "/sr_novel/images/main/big_banner/big_banner_4.jpg",
+      "alt": "네 번째 빅배너"
+    },
+    {
+      "src": "/sr_novel/images/main/big_banner/big_banner_5.jpg",
+      "alt": "다섯 번째 빅배너"
+    }
+  ]
+}
