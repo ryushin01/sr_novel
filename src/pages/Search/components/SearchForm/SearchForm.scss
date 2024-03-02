@@ -55,6 +55,37 @@
         }
       }
     }
+
+    @include Mobile {
+      .search-form {
+        margin: 0;
+
+        label {
+          display: flex;
+
+          input {
+            @include Typography(2xs);
+            padding: 6px 10px;
+            border: 1px $grayscale-3 solid;
+            border-radius: 5px;
+
+            &:focus {
+              border-color: $primary-color;
+            }
+          }
+        }
+
+        .btn-group {
+          right: 5px;
+
+          button {
+            width: 34px;
+            height: 34px;
+            background-size: 24px;
+          }
+        }
+      }
+    }
   }
 }
 

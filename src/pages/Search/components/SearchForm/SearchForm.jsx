@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 import { customAxios } from '@/config';
 import { useInput } from '@customHooks/useInput';
 import SearchLoading from '@pages/Search/components/SearchLoading/SearchLoading';
@@ -7,31 +8,48 @@ import './SearchForm.scss';
 const SearchForm = ({
   handleCompletedSearch,
   handleQuery,
-  handleTotalResults,
+  handleSearchResultData,
 }) => {
   const [loading, setLoading] = useState(false);
   const [searchKeywordData, setSearchKeywordData] = useInput({
     query: '',
   });
-  const [CategoryId, setCategoryId] = useState(1);
-  const [searchResultData, setSearchResultData] = useState({});
-
-  // SEARCH_RESULT_TAB_DATA에서 CategoryId 필요
 
   const API_KEY = import.meta.env.VITE_ALADDIN_API_KEY;
-  const API_URL = `ttb/api/ItemSearch.aspx?ttbkey=${API_KEY}&Query=${searchKeywordData.query}&QueryType=Keyword&CategoryId=${CategoryId}&MaxResults=100&start=1&SearchTarget=Book&output=js&Version=20131101`;
+  const categoryArr = ['all', 'romance', 'fantasy', 'light'];
 
-  const getCategoryList = async e => {
-    e.preventDefault();
+  const categoryIdSwitcher = value => {
+    let categoryId;
+
+    switch (value) {
+      case 'all':
+        categoryId = 1;
+        break;
+      case 'romance':
+        categoryId = 51125;
+        break;
+      case 'fantasy':
+        categoryId = 51122;
+        break;
+      default:
+        categoryId = 50927;
+    }
+
+    return `ttb/api/ItemSearch.aspx?ttbkey=${API_KEY}&Query=${searchKeywordData.query}&QueryType=Keyword&CategoryId=${categoryId}&MaxResults=100&start=1&SearchTarget=Book&output=js&Version=20131101`;
+  };
+
+  const getCategoryList = async () => {
     setLoading(true);
 
     try {
-      const response = await customAxios.get(API_URL);
-      setSearchResultData(response?.data);
-      // setBookItemInfo(response?.data?.item);
-      // console.log(response);
-      handleQuery(response?.data?.query);
-      handleTotalResults(response?.data?.totalResults);
+      const response = await axios.all(
+        categoryArr.map(categoryArr =>
+          customAxios.get(categoryIdSwitcher(categoryArr)),
+        ),
+      );
+
+      handleQuery(response[0].data.query);
+      handleSearchResultData(response);
       handleCompletedSearch();
       setLoading(false);
     } catch (error) {
@@ -39,19 +57,17 @@ const SearchForm = ({
     }
   };
 
-  console.log(searchResultData);
+  const submitSearchKeyword = e => {
+    e.preventDefault();
+    getCategoryList();
+  };
 
-  // const { query, totalResults } = searchResultData;
-
-  // useEffect(() => {
-
-  // }, []);
   return (
     <>
       <form
         className="search-form"
         onChange={setSearchKeywordData}
-        onSubmit={getCategoryList}
+        onSubmit={submitSearchKeyword}
       >
         <fieldset>
           <legend>검색 폼</legend>

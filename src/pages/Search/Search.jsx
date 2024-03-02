@@ -7,7 +7,7 @@ import './Search.scss';
 const Search = () => {
   const [isCompletedSearch, setIsCompletedSearch] = useState(false);
   const [query, setQuery] = useState('');
-  const [totalResults, setTotalResults] = useState(0);
+  const [searchResultData, setSearchResultData] = useState([]);
 
   const handleCompletedSearch = () => {
     setIsCompletedSearch(true);
@@ -17,11 +17,9 @@ const Search = () => {
     setQuery(value);
   };
 
-  const handleTotalResults = value => {
-    setTotalResults(value);
+  const handleSearchResultData = value => {
+    setSearchResultData(value);
   };
-
-  // totalResults 및 각 카테고리 검색 결과 객체로 SearchResult > Tab까지 전달 필요
 
   return (
     <main className="search">
@@ -30,11 +28,12 @@ const Search = () => {
           <SearchForm
             handleCompletedSearch={handleCompletedSearch}
             handleQuery={handleQuery}
-            handleTotalResults={handleTotalResults}
+            // handleTotalResults={handleTotalResults}
+            handleSearchResultData={handleSearchResultData}
           />
         </div>
         {isCompletedSearch ? (
-          <SearchResult query={query} totalResults={totalResults} />
+          <SearchResult query={query} searchResultData={searchResultData} />
         ) : (
           <RecommendKeywords />
         )}
