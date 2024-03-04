@@ -2,7 +2,7 @@
   "name": "sr_novel",
   "private": true,
   "homepage": "https://ryushin01.github.io/sr_novel",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",

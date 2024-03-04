@@ -17,7 +17,7 @@ const Header = () => {
     <header className="header">
       <div className="inner-wrap">
         <h1>
-          <Link to="/">SR NOVEL</Link>
+          <Link to="/main">SR NOVEL</Link>
         </h1>
 
         <div className="btn-group">

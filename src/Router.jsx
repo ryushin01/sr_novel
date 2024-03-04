@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Gateway from '@pages/Gateway/Gateway';
 import Main from './pages/Main/Main';
 import SignUp from '@pages/SignUp/SignUp';
 import Header from './components/Header/Header';
@@ -15,7 +16,8 @@ const Router = () => {
       <Header />
       <ScrollTop />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Gateway />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/list/:queryType" element={<List />} />
         <Route path="/detail/:isbn13" element={<BookDetail />} />

@@ -18,7 +18,7 @@ const ViewerMetadata = ({ title }) => {
         </li>
       </ul>
 
-      <Link to="/">소설 홈으로 가기</Link>
+      <Link to="/main">소설 홈으로 가기</Link>
     </div>
   );
 };
