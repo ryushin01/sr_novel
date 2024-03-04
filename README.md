@@ -1,5 +1,7 @@
 > 이 프로젝트는 웹소설 플랫폼 서비스를 구현하는 것을 목적으로 합니다. 데이터는 [알라딘 도서 OPEN API](https://blog.aladin.co.kr/openapi/popup/6695306)를 활용했으며, 디자인 및 기능 타겟 사이트는 [Blice](https://www.blice.co.kr/web/homescreen/main.kt?)입니다.
 
+![ryushin01 github io_sr_novel_main (1)](https://github.com/ryushin01/sr_novel/assets/134205968/b49b0dee-1777-473f-b293-bba93ea15dc2)
+
 - 개발자
 
   - [박요진(syon013)](https://github.com/syon013)
