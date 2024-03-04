@@ -1,0 +1,8 @@
+@charset "urf-8";
+@import '@scss/partials/mixin.scss', '@scss/partials/theme.scss';
+
+.gateway {
+  @include Position(fixed, 0, 0, 0, 0);
+  z-index: 100;
+  background-color: $grayscale-1;
+}

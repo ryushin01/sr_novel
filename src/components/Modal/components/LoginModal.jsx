@@ -55,7 +55,7 @@ const LoginModal = ({ isModalOpen, setIsModalOpen }) => {
         if (response.status === 200) {
           localStorage.setItem('accessToken', response.data.access_token);
           setIsModalOpen(!isModalOpen);
-          navigate('/');
+          navigate('/main');
           window.location.reload();
         }
       } catch (error) {
